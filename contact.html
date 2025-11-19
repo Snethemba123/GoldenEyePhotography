@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Eye Films - Contact</title>
+    <!-- Existing CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <!-- Font link -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        
+  /* Contact Section */
+.contact-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact-section h2 {
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.contact-content {
+    display: flex;
+    justify-content: center; 
+    max-width: 800px; 
+    margin: 0 auto;
+}
+
+/* contact-info-container and contact-form-container  */
+.contact-info-container,
+.contact-form-container {
+    width: 100%; 
+}
+
+.contact-form-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+   
+}
+
+.contact-info-item {
+    margin-bottom: 30px;
+}
+
+.contact-info-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.contact-info-item p {
+    margin: 0;
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Contact Form */
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 30px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 2px solid #FFC107;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #FFC107;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-form .btn:hover {
+    background-color: #FFC107;
+    color: #333;
+}
+        /* Success/Error Message */
+        .success-message, .error-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 0;
+            margin-bottom: 80px;
+        }
+
+        .map-section .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .contact-section, .map-section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/chosen logo i png.png" alt="Golden Eye Films Logo" style="height: 30px;">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="portfolio.html" class="dropbtn" id="portfolioDropdownLink">Portfolio</a>
+                        <div class="dropdown-content">
+                            <a href="portfolio.html#umemulo-album">Umemulo</a>
+                            <a href="portfolio.html#wedding-album">White Weddings</a>
+                            <a href="portfolio.html#umembeso-album">Umembeso</a>
+                            <a href="portfolio.html#graduation-album">Graduation Shoot</a>
+                        </div>
+                    </li>
+                    <li><a href="services.html">Services & Pricing</a></li>
+                    <li><a href="booking.html">Book Now</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html" class="active">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <section class="page-hero"></section>
+
+    <main>
+        <section id="contact-details" class="contact-section">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <p>We'd love to hear from you. Fill out the form below or use our contact details to reach out directly. We're here to answer any questions you may have.</p>
+                <div class="contact-content">
+                    <div class="contact-form-container">
+                        <h3>Send us a message</h3>
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject:</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message:</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                            <div id="success-message" class="success-message">Your message has been sent successfully! We will get back to you soon.</div>
+                            <div id="error-message" class="error-message">There was an error sending your message. Please try again later.</div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <section id="location" class="map-section">
+            <div class="container">
+                <h2>Visit Us</h2>
+                
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.9221611522944!2d30.8323416!3d-30.067765599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa2c449d3ed9695b7%3A0x1221e95743f89c31!2sGolden%20Eye%20Films!5e0!3m2!1sen!2sza!4v1754390727294!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about-us">
+                    <h3>Golden Eye Films</h3>
+                    <p>Specializing in capturing the heart and soul of your most cherished moments.</p>
+                </div>
+                <div class="footer-section quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-info">
+                   <h3>Contact Us</h3>
+                    <p>Email: goldeneyefilms2@gmail.com</p>
+                    <p>Phone: +27 71 833 9470 </p>
+
+                    <div class="social-links">
+                        <!-- placeholders for social media icons -->
+                       <a href="https://wa.me/27718339470" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 2.233.72 4.316 2.012 5.992L2.001 22l4.498-2.008A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                                <path d="M17.5 15.5c-.328-.164-.995-.494-1.14-.549-.145-.055-.25-.082-.355.082-.105.164-.407.494-.499.599-.092.105-.184.118-.344.037-.16-.082-.676-.248-1.284-.792-.47-.417-.788-.933-.879-1.082-.092-.15-.009-.23.073-.312.079-.079.176-.205.263-.308.087-.105.116-.184.175-.308.058-.124.029-.23-.015-.312-.044-.082-.387-.933-.53-.933-.143 0-.25.062-.337.124-.087.062-.204.148-.308.263-.104.116-.226.257-.226.355 0 .092.145.494.204.599.059.105.116.124.226.226.109.105.812 1.34 1.966 1.834 1.154.495 1.154.344 1.36.248.204-.096.657-.26.837-.324.18-.063.29-.02.417.062.125.082.78 1.05.78 1.05.002.003.003.006.005.008z"/>
+                            </svg>
+                        </a>
+                       
+                          <a href="https://www.facebook.com/profile.php?id=100069323886955&mibextid=ZbWKwL" target="_blank">
+    <img src="https://placehold.co/24x24/1877F2/ffffff?text=FB" alt="Facebook">
+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Golden Eye Films. All rights reserved.Designed by Snethemba Shangase
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+    // Mobile menu toggle script (keep this as is)
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('header nav ul');
+
+    menuToggle.addEventListener('click', function() {
+        navUl.classList.toggle('active');
+    });
+    
+    // Email.js Form Submission Logic
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+
+    // Initialize Email.js with your Public Key
+    emailjs.init('YNZmyhuJBpqUD14kk'); 
+
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const serviceID = 'service_xcs6qe7'; 
+        const templateID = 'template_v370k86'; 
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                // On successful send
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                contactForm.reset();
+                console.log('SUCCESS!');
+                
+                // Hide the message after a few seconds
+                setTimeout(() => {   
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }, (error) => {
+                // On error
+                console.error('FAILED...', error);
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+            });
+    });
+});
+</script>
+    
+</body>
+</html>

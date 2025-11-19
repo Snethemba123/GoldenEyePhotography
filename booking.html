@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Photography Session - Golden Eye Films</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/booking-page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- REQUIRED: EmailJS CDN for sending emails from the browser -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+
+<style>
+
+:root {
+    --primary-gold: #FFC107; 
+    --primary-dark: #2c3e50;
+    --secondary-dark: #34495e; 
+    --text-light: #ecf0f1; 
+    --text-dark: #34495e; 
+    --light-bg: #f4f4f4; 
+    --border-color: #bdc3c7;
+}
+
+body {
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+#booking-page {
+    background-color: #ffffff;
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin: 50px auto;
+    max-width: 900px;
+}
+
+#booking-page h2 {
+    color: var(--primary-dark);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+#booking-page p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+#booking-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+@media (min-width: 768px) {
+    #booking-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-group:nth-child(5), 
+    .form-group:nth-child(6), 
+    .form-group:nth-child(7),
+    .form-group:nth-child(8), 
+    .form-group:nth-child(13), 
+    .btn {
+        grid-column: span 2;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.radio-group label {
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.terms-checkbox {
+    flex-direction: row;
+    align-items: center;
+}
+
+.terms-checkbox label {
+    margin: 0;
+    font-weight: normal;
+}
+
+.terms-checkbox a {
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* --- Submit Button --- */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-gold);
+    color: var(--primary-dark);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e6b106;
+    transform: translateY(-2px);
+}
+
+/* --- flatpickr (calendar) styling to match the theme --- */
+.flatpickr-calendar {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+    background-color: var(--primary-gold);
+    border-color: var(--primary-gold);
+    color: var(--primary-dark);
+}
+
+.flatpickr-day.today {
+    border-color: var(--primary-gold);
+}
+</style>
+<body>
+    <header>
+       <div class="container">
+        <div class="logo">
+    <a href="index.html">
+        <img src="images/chosen logo i png.png" alt="Golden Eye Films Logo" style="height: 30px;"> </a>
+</div>
+           <nav>
+               <ul>
+                   <li><a href="index.html">Home</a></li>
+                       <li class="dropdown">
+                        <a href="portfolio.html" class="dropbtn">Portfolio</a>
+                        <div class="dropdown-content">
+                           <a href="portfolio.html#umemolo-album">Umemulo</a>
+                           <a href="portfolio.html#wedding-album">White Weddings</a>
+                           <a href="portfolio.html#umembeso-album">Umembeso</a>
+                           <a href="portfolio.html#graduation-album">Graduation Shoot</a>
+                           </div>
+                   </li>
+                   <li><a href="services.html">Services & Pricing</a></li>
+                   <li><a href="booking.html">Book Now</a></li>
+                   <li><a href="about.html">About Us</a></li>
+                   <li><a href="contact.html">Contact Us</a></li>
+               </ul>
+           </nav>
+           <div class="menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <section class="page-hero"></section>
+    <main>
+        <section id="booking-page" class="container section-padding">
+            <h2>Book Your Photography Session</h2>
+            <p>Select a date from the calendar and fill out the form below to request a booking. We will contact you to confirm the details and discuss payment.</p>
+
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientEmail">Personal Email:</label>
+                    <input type="email" id="clientEmail" name="clientEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientPhone">Mobile Phone:</label>
+                    <input type="tel" id="clientPhone" name="clientPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventType">Type of Photoshoot:</label>
+                    <select id="eventType" name="eventType" required>
+                        <option value="">Select Event Type</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="umemulo">Traditional Event: Umemulo; Umembeso etc.</option>
+                        <option value="graduation">Graduation Party</option>
+                        <option value="birthday">Birthday</option>
+                        <option value="portrait">Portrait Session</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you need videography services?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="videoYes" name="videography" value="Yes">
+                        <label for="videoYes">Yes</label>
+                        <input type="radio" id="videoNo" name="videography" value="No" checked>
+                        <label for="videoNo">No</label>
+                        <input type="radio" id="videoMaybe" name="videography" value="Maybe">
+                        <label for="videoMaybe">Maybe</label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="videographySpecifyGroup" style="display: none;">
+                    <label for="videographySpecify">If yes, please specify:</label>
+                    <textarea id="videographySpecify" name="videographySpecify" rows="2" placeholder="e.g., Full day coverage, drone footage, short highlight reel"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="documentationDescription">Please describe how you would like your day to be documented (add services you would like to receive so a specific quote can be generated):</label>
+                    <textarea id="documentationDescription" name="documentationDescription" rows="5" required placeholder="e.g., Candid shots throughout the day, formal family portraits, coverage of traditional rituals, specific moments to focus on."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="venue">Venue of the Shoot:</label>
+                    <input type="text" id="venue" name="venue" required placeholder="e.g., Hilton Hotel, Durban Botanic Gardens">
+                </div>
+
+                <div class="form-group">
+                    <label for="eventDate">Event Date:</label>
+                    <input type="text" id="eventDate" name="eventDate" required readonly>
+                </div>
+                <div class="form-group">
+                    <label for="startTime">Estimated Start Time (e.g., 9:00 AM):</label>
+                    <input type="text" id="startTime" name="startTime" placeholder="e.g., 9:00 AM">
+                </div>
+                <div class="form-group">
+                    <label for="endTime">Estimated End Time (e.g., 7:00 PM):</label>
+                    <input type="text" id="endTime" name="endTime" placeholder="e.g., 7:00 PM">
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalInfo">Any Other Additional Information:</label>
+                    <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
+                </div>
+
+                <div class="form-group terms-checkbox">
+                    <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                    <label for="acceptTerms">I accept the <a href="terms.html" target="_blank">Terms and Conditions</a></label>
+                </div>
+
+                <button type="submit" class="btn">Submit Booking Request</button>
+                <p id="booking-message"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about-us">
+                    <h3>Golden Eye Films</h3>
+                    <p>Specializing in capturing the heart and soul of your most cherished moments.</p>
+                </div>
+                <div class="footer-section quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-info">
+                    <h3>Contact Us</h3>
+                    <p>Email: goldeneyefilms2@gmail.com</p>
+                 <p>Phone: +27 71 833 9470 </p>
+
+                    <div class="social-links">
+                        <!-- placeholders for social media icons -->
+                       <a href="https://wa.me/27718339470" target="_blank">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 2.233.72 4.316 2.012 5.992L2.001 22l4.498-2.008A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                                <path d="M17.5 15.5c-.328-.164-.995-.494-1.14-.549-.145-.055-.25-.082-.355.082-.105.164-.407.494-.499.599-.092.105-.184.118-.344.037-.16-.082-.676-.248-1.284-.792-.47-.417-.788-.933-.879-1.082-.092-.15-.009-.23.073-.312.079-.079.176-.205.263-.308.087-.105.116-.184.175-.308.058-.124.029-.23-.015-.312-.044-.082-.387-.933-.53-.933-.143 0-.25.062-.337.124-.087.062-.204.148-.308.263-.104.116-.226.257-.226.355 0 .092.145.494.204.599.059.105.116.124.226.226.109.105.812 1.34 1.966 1.834 1.154.495 1.154.344 1.36.248.204-.096.657-.26.837-.324.18-.063.29-.02.417.062.125.082.78 1.05.78 1.05.002.003.003.006.005.008z"/>
+                             </svg>
+                         </a>
+
+                         <a href="https://www.facebook.com/profile.php?id=100069323886955&mibextid=ZbWKwL" target="_blank">
+    <img src="https://placehold.co/24x24/1877F2/ffffff?text=FB" alt="Facebook">
+</a>
+    
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy;2025 Golden Eye Films. All rights reserved. Designed by Snethemba Shangase
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/script.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

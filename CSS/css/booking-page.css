@@ -1,0 +1,275 @@
+/* css/booking-page.css */
+
+/* Global Body Background and Overlay (Applies to all screen sizes) */
+body {
+    background-image: url('/images/_MG_1905.jpg'); /* Adjust path to your image if needed */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center center; /* Center the image */
+    background-attachment: fixed; /* Makes the background scroll with the page */
+    background-repeat: no-repeat;
+    position: relative; /* Needed for the pseudo-element overlay */
+    z-index: 0; /* Ensure it's behind content but above pseudo-element if needed */
+}
+
+/* Semi-transparent overlay directly on the body */
+body::before {
+    content: '';
+    position: fixed; /* Use fixed so it covers the whole viewport even on scroll */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust transparency (0.6 for 60% black overlay) */
+    z-index: -1; /* Place it behind content but above the background image */
+}
+
+/* Styles for the main booking page content area */
+#booking-page {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center; /* Center content within the section */
+}
+
+/* Adjust heading and paragraph colors for contrast on darker background */
+#booking-page h2 {
+    font-size: 2.8em; /* Prominent heading */
+    color: #f4f4f4; /* Light text color for headings outside the form */
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block; /* To make ::after line below it */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Subtle text shadow for readability */
+}
+
+/* Underline effect for the heading */
+#booking-page h2::after {
+    content: '';
+    display: block;
+    width: 60px; /* Short line */
+    height: 4px;
+    background-color: #FFD700; /* Gold color */
+    margin: 10px auto 0; /* Center the line */
+    border-radius: 2px;
+}
+
+#booking-page p {
+    font-size: 1.1em;
+    color: #f4f4f4; /* Light text color for paragraphs outside the form */
+    margin-bottom: 40px;
+    max-width: 800px; /* Constrain paragraph width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Subtle text shadow for readability */
+}
+
+/* Specific styles for the booking form container */
+#booking-form {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for a subtle effect */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for the form */
+    max-width: 700px; /* Slightly wider form */
+    margin: 40px auto;
+    text-align: left;
+    color: #333; /* Dark text for form elements */
+    position: relative; /* Ensure the form is above the body's overlay */
+    z-index: 1;
+}
+
+#booking-form .form-group {
+    margin-bottom: 25px; /* More space between form groups */
+}
+
+#booking-form label {
+    display: block;
+    margin-bottom: 10px; /* Space between label and input */
+    font-weight: 600; /* Slightly bolder labels */
+    color: #333;
+    font-size: 1em;
+}
+
+#booking-form input[type="text"],
+#booking-form input[type="email"],
+#booking-form input[type="tel"],
+#booking-form input[type="date"],
+#booking-form select,
+#booking-form textarea {
+    width: 100%;
+    padding: 14px; /* More padding for larger inputs */
+    border: 1px solid #ddd; /* Lighter border for inputs */
+    border-radius: 6px; /* Slightly more rounded corners */
+    font-size: 1.05em; /* Slightly larger text in inputs */
+    box-sizing: border-box;
+    background-color: #fcfcfc; /* Very light background for inputs */
+    color: #333; /* Dark text for input values */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#booking-form input[type="text"]:focus,
+#booking-form input[type="email"]:focus,
+#booking-form input[type="tel"]:focus,
+#booking-form input[type="date"]:focus,
+#booking-form select:focus,
+#booking-form textarea:focus {
+    border-color: #FFC107; /* Primary accent yellow on focus */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2); /* Soft glow on focus */
+}
+
+/* Specific styling for the Flatpickr calendar input */
+.flatpickr-input[readonly] {
+    cursor: pointer; /* Indicate it's clickable */
+    background-color: #fcfcfc;
+}
+
+#booking-form select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%23555555%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-5.4H18.6a17.6%2017.6%200%200%200-13.2%205.4A17.6%2017.6%200%200%200%200%2082.6c0%204.8%201.8%209.2%205.4%2013.2l128.8%20128.8c3.6%203.6%208%205.4%2013.2%205.4s9.6-1.8%2013.2-5.4l128.8-128.8c3.6-3.6%205.4-8%205.4-13.2%200-4.8-1.8-9.2-5.4-13.2z%22%2F%3E%3C%2Fsvg%3E'); /* Darker arrow for light background */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 0.7em auto;
+    padding-right: 3rem; /* Make space for the arrow */
+}
+
+#booking-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Radio button group styling */
+.radio-group {
+    display: flex;
+    gap: 20px; /* Space between radio options */
+    margin-top: 10px;
+}
+
+.radio-group input[type="radio"] {
+    display: none; /* Hide default radio button */
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding-left: 28px; /* Space for custom radio button */
+    font-weight: normal; /* Labels are not bold here */
+    color: #555;
+    margin-bottom: 0; /* Override default label margin */
+}
+
+.radio-group label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked + label::before {
+    border-color: #FFC107; /* Gold border when checked */
+    background-color: #FFC107; /* Gold fill when checked */
+}
+
+.radio-group input[type="radio"]:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fff; /* White dot inside checked radio */
+    animation: fadeInScale 0.2s ease-out;
+}
+
+
+/* Terms and Conditions Checkbox */
+.terms-checkbox {
+    margin-top: 30px;
+    display: flex;
+    align-items: flex-start; /* Align checkbox with text top */
+}
+
+.terms-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+    margin-top: 4px; /* Adjust vertical alignment */
+    transform: scale(1.2); /* Slightly larger checkbox */
+    accent-color: #FFC107; /* Gold color for default checkbox */
+}
+
+.terms-checkbox label {
+    display: inline; /* Keep label inline with checkbox */
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.terms-checkbox label a {
+    color: #007bff; /* Blue link for terms */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.terms-checkbox label a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline;
+}
+
+#booking-form .btn {
+    width: 100%; /* Make the submit button full width within the form */
+    padding: 15px; /* More padding for button */
+    font-size: 1.2em;
+    margin-top: 30px; /* More space above the button */
+    border-radius: 8px; /* Slightly less rounded than pill shape for form button */
+    /* Inherits colors from global .btn but can be overridden here if needed */
+}
+
+/* Message styling (success/error) */
+#booking-message {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.success-message {
+    color: #155724; /* Dark green text */
+    background-color: #d4edda; /* Light green background */
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    color: #721c24; /* Dark red text */
+    background-color: #f8d7da; /* Light red background */
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive adjustments for booking form */
+@media (max-width: 600px) {
+    #booking-form {
+        padding: 25px;
+    }
+
+    #booking-page h2 {
+        font-size: 2.2em;
+    }
+
+    #booking-page p {
+        font-size: 1em;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

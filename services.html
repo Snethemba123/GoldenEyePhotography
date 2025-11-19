@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Eye Films - Services & Pricing</title>
+    <!-- Existing CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <!-- Font link -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+       
+        /* Pricing Cards Section */
+        .pricing-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .pricing-section .container h2 {
+            margin-bottom: 10px;
+        }
+        
+        .pricing-section .container p {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            color: #000000;
+        }
+
+        .pricing-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            padding: 40px 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(4, 0, 0, 0.15);
+        }
+
+        /* Styling for the featured card */
+        .pricing-card.featured {
+            background-color: #FFC107;
+            color: #020202;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card.featured .btn {
+            background-color: #000000;
+            color: #FFC107;
+            border-color: #000000;
+        }
+
+        .pricing-card.featured .btn:hover {
+            background-color: #070707;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        
+        .pricing-card .price span {
+            font-size: 1.5rem;
+            font-weight: 400;
+            vertical-align: top;
+            margin-left: 5px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px;
+            text-align: left;
+            /* Ensures consistent card height */
+            min-height: 200px;
+        }
+
+        .pricing-card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 1rem;
+            color: #0a0a0a;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-card.featured ul li {
+            color: #060606;
+            border-color: #fce7b1;
+        }
+
+        .pricing-card ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-card ul li::before {
+            content: '✔';
+            color: #FFC107; 
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .pricing-card.featured ul li::before {
+            color: #050505;
+        }
+
+        .pricing-card .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: 2px solid #FFC107;
+            border-radius: 5px;
+            background-color: transparent;
+            color: #FFC107;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pricing-card .btn:hover {
+            background-color: #FFC107;
+            color: #060606;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            .page-hero .breadcrumb {
+                font-size: 1rem;
+            }
+            .pricing-section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/chosen logo i png.png" alt="Golden Eye Films Logo" style="height: 30px;">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="portfolio.html" class="dropbtn" id="portfolioDropdownLink">Portfolio</a>
+                        <div class="dropdown-content">
+                            <a href="portfolio.html#umemulo-album">Umemulo</a>
+                            <a href="portfolio.html#wedding-album">White Weddings</a>
+                            <a href="portfolio.html#umembeso-album">Umembeso</a>
+                            <a href="portfolio.html#graduation-album">Graduation Shoot</a>
+                        </div>
+                    </li>
+                    <li><a href="services.html" class="active">Services & Pricing</a></li>
+                    <li><a href="booking.html">Book Now</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">☰</div>
+        </div>
+    </header>
+
+     <section class="page-hero">
+    </section>
+
+    <main>
+        <section id="services" class="pricing-section">
+            <div class="container">
+                <h2>Our Packages</h2>
+                <p>We offer a range of customizable packages to fit your unique needs. Whether you're planning a grand event or an intimate photoshoot, we have the perfect option for you.</p>
+
+                <!-- Umemulo Packages -->
+                <h3 style="margin-bottom: 20px;">Umemulo & Umembeso Packages</h3>
+                <div class="pricing-cards-container">
+                    <!-- Package 1: Silver -->
+                    <div class="pricing-card">
+                        <h3>Silver Package</h3>
+                        <p class="price">R 5 000.00<span></span></p>
+                        <ul>
+                            <li>10 Hours of Coverage</li>
+                            <li>Unlimited Pictures</li>
+                            <li>Pictures sent via link</li>
+                            <li>Full HD Video</li>
+                            <li>1x USB</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                    
+                    <!-- Package 2: Gold -->
+                    <div class="pricing-card featured">
+                        <h3>Gold Package</h3>
+                        <p class="price">R 7 600.00<span></span></p>
+                        <ul>
+                            <li>10 Hours of Coverage</li>
+                            <li>Unlimited Pictures</li>
+                            <li>A4 Photobook (28 pages)</li>
+                            <li>3x A4 canvas prints</li>
+                            <li>Pictures sent via link</li>
+                            <li>4k Video</li>
+                            <li>1x USB</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+
+                    <!-- Package 3: Platinum -->
+                    <div class="pricing-card">
+                        <h3>Platinum Package</h3>
+                        <p class="price">R9 000.00 <span></span></p>
+                        <ul>
+                            <li>Unlimited pictures</li>
+                            <li>Full HD Photobook (28 pages)</li>
+                            <li>3x A3 canvas prints</li>
+                            <li>Pictures sent via link</li>
+                            <li>4k Video</li>
+                            <li>1x USB</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="videography" class="pricing-section" style="background-color: #f0f0f0;">
+            <div class="container">
+                <h3 style="margin-bottom: 20px;">Wedding packages</h3>
+                <div class="pricing-cards-container">
+                     <!-- Package 1: Videography Basic -->
+                    <div class="pricing-card">
+                        <h3>Silver Package</h3>
+                        <p class="price">R 9 100.00<span></span></p>
+                        <ul>
+                            <li>Unlimited pictures</li>
+                            <li>Pictures sent via link</li>
+                            <li>A4 HD Photobook (28 pages)</li>
+                            <li>3x A4 Canvas prints</li>
+                            <li>Full HD Video</li>
+                            <li>1x USB</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                    
+                    <!-- Package 2: Videography Standard (Featured) -->
+                    <div class="pricing-card featured">
+                        <h3>Gold package</h3>
+                        <p class="price">R11 300.00<span></span></p>
+                        <ul>
+                            <li>Unlimited pictures</li>
+                            <li>Pictures sent via link</li>
+                            <li>A4 Full HD Photobook (28 pages)</li>
+                            <li>3x A3 canvas prints</li>
+                            <li>4k Video</li>
+                            <li>1x USB</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+
+                    <!-- Package 3: Videography Premium -->
+                    <div class="pricing-card">
+                        <h3>Premium Package</h3>
+                        <p class="price">R16 000.00<span></span></p>
+                        <ul>
+                            <li>Unlimited pictures</li>
+                            <li>Pictures sent via link</li>
+                            <li>A3 Full HD Photobook (28 pages)</li>
+                            <li>3x A2 canvas prints</li>
+                            <li>Live painting - A2 canvas</li>
+                            <li>4k Video</li>
+                            <li>1x USB</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+                <p style="margin-top: 50px; font-size: 0.9rem; color: #888;">*All prices are subject to a travel fee for locations outside of the greater Durban area. Please contact us for a custom quote.</p>
+            </div>
+        </section>
+    </main>
+
+    <section id="portfolio-booking" class="section-padding">
+        <div class="container text-center">
+            <h2>Ready to Begin?</h2>
+            <p>We believe every story is unique. Contact us today to discuss your vision and create a custom package that's perfect for you.</p>
+            <a href="contact.html" class="btn">Get a Custom Quote</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about-us">
+                    <h3>Golden Eye Films</h3>
+                    <p>Specializing in capturing the heart and soul of your most cherished moments.</p>
+                </div>
+                <div class="footer-section quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-info">
+                   <h3>Contact Us</h3>
+                    <p>Email: goldeneyefilms2@gmail.com</p>
+                   <p>Phone: +27 71 833 9470 </p>
+
+                    <div class="social-links">
+                        <!-- placeholders for social media icons -->
+                          <a href="https://wa.me/27718339470" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 2.233.72 4.316 2.012 5.992L2.001 22l4.498-2.008A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                                <path d="M17.5 15.5c-.328-.164-.995-.494-1.14-.549-.145-.055-.25-.082-.355.082-.105.164-.407.494-.499.599-.092.105-.184.118-.344.037-.16-.082-.676-.248-1.284-.792-.47-.417-.788-.933-.879-1.082-.092-.15-.009-.23.073-.312.079-.079.176-.205.263-.308.087-.105.116-.184.175-.308.058-.124.029-.23-.015-.312-.044-.082-.387-.933-.53-.933-.143 0-.25.062-.337.124-.087.062-.204.148-.308.263-.104.116-.226.257-.226.355 0 .092.145.494.204.599.059.105.116.124.226.226.109.105.812 1.34 1.966 1.834 1.154.495 1.154.344 1.36.248.204-.096.657-.26.837-.324.18-.063.29-.02.417.062.125.082.78 1.05.78 1.05.002.003.003.006.005.008z"/>
+                            </svg>
+                        </a>
+                       <a href="https://www.facebook.com/profile.php?id=100069323886955&mibextid=ZbWKwL" target="_blank">
+    <img src="https://placehold.co/24x24/1877F2/ffffff?text=FB" alt="Facebook">
+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Golden Eye Films. All rights reserved. Designed by Snethemba Shangase
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle script
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navUl = document.querySelector('header nav ul');
+
+            menuToggle.addEventListener('click', function() {
+                navUl.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

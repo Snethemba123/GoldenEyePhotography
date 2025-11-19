@@ -1,0 +1,701 @@
+/* Universal Box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Common Page Hero Banner (for all pages except Home) --- */
+.page-hero {
+    background-image: url('../images/wedding/_MG_7162\ \(1\)\ \(1\).jpg'); /* Corrected relative path */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 80px 20px; /* Adjust padding to control height */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 250px; /* Minimum height for the banner */
+}
+
+.page-hero .page-hero-overlay {
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay for text readability */
+    padding: 20px 40px;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.page-hero h1 {
+    font-size: 3em; /* Title of the page */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    line-height: 1.2;
+}
+
+.page-hero .breadcrumb {
+    font-size: 1em;
+    opacity: 0.8;
+    margin-top: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustments for the page hero */
+@media (max-width: 768px) {
+    .page-hero {
+        min-height: 200px;
+        padding: 60px 20px;
+    }
+    .page-hero h1 {
+        font-size: 2.2em;
+    }
+    .page-hero .breadcrumb {
+        font-size: 0.9em;
+    }
+}
+
+/* Body Styles */
+body {
+    font-family: 'Inter', sans-serif; /* Changed from Arial to Inter */
+    line-height: 1.6;
+    color: #333; /* Main text color */
+    background-color: #f4f4f4; /* Light background */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Container for Centering Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Padding */
+.section-padding {
+    padding: 80px 0;
+}
+
+/* Text Alignment */
+.text-center {
+    text-align: center;
+}
+
+/* Dark Background Class (for sections like booking) */
+.dark-bg {
+    background-color: #000; /* Black background from portfolio.html */
+    color: #f4f4f4; /* Light text on dark background */
+}
+
+/* Header Styles */
+header {
+    background-color: #f4f4f4; /* Black header background from portfolio.html */
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+/* Logo Styles */
+.logo a {
+    font-size: 28px; /* Adjusted font size for text logo if used */
+    font-weight: bold;
+    color: #FFD700; /* Gold color for text logo if used */
+    text-decoration: none;
+    display: flex; /* To align image and text if both are in logo */
+    align-items: center;
+}
+
+.logo img {
+    height: 40px; /* Increased logo size to match the screenshot */
+    vertical-align: middle;
+}
+
+.logo a:hover {
+    transform: scale(1.05); /* Hover effect for the logo */
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333; /* Light text for nav links */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #FFD700; /* Gold hover/active color */
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #f4f4f4; /* Light color for toggle icon */
+}
+
+/* Dropdown CSS */
+nav ul li.dropdown {
+    position: relative;
+}
+
+nav ul li.dropdown .dropbtn {
+    padding-right: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333333; /* Dark background for dropdown */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4); /* Darker shadow */
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #fff; /* Light text for dropdown items */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-weight: normal;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #FFD700; /* Gold hover background */
+    color: #333; /* Dark text on gold hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* End Dropdown CSS */
+
+/* Hero Section Styles */
+
+#hero {
+    /* Placeholder for your actual background image, adjusted to match existing styles.css path */
+    background: url('../images/wedding/_MG_7168\ \(1\).jpg') no-repeat center center/cover;
+    color: #f4f4f4;
+    text-align: center;
+    padding: 150px 20px;
+    height: 600px; /* Fixed height for consistency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative; /* For overlay */
+}
+
+#hero::before { /* Overlay for readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+    background-color: transparent; /* Overlay is handled by ::before */
+    padding: 30px;
+    border-radius: 8px;
+    position: relative; /* Ensure content is above overlay */
+    z-index: 2;
+}
+
+#hero h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+#hero p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    background-color: #FFC107; /* Primary accent yellow */
+    color: #1f2937; /* Dark text on yellow button */
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 9999px; /* Rounded pill shape */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 10px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Light shadow for buttons */
+}
+
+.btn:hover {
+    background-color: #FFD700; /* Slightly lighter yellow on hover */
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: #333333; /* Dark background for secondary button */
+    color: #fff; /* White text on dark button */
+    border: 1px solid #fff; /* White border */
+}
+
+.btn-secondary:hover {
+    background-color: #555555; /* Slightly lighter dark on hover */
+    border-color: #fff; /* Keep border white */
+}
+
+/* Welcome Section - kept from styles.css as it's not in portfolio.html's inline style */
+#welcome h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#welcome p {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.feature-item h3 {
+    color: #A0522D;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.feature-item p {
+    color: #333; /* A dark color for readability */
+}
+/* Portfolio Album Display Control */
+.portfolio-album {
+    display: none; /* Hides all albums by default */
+    animation: fadeIn 0.8s ease-out forwards; /* Fade in when shown */
+}
+
+
+/* Hide album description paragraphs */
+.album-description {
+    display: none; /* Hide these paragraphs */
+}
+
+/* Image Grid - Standard */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Min width 380px */
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.image-grid a {
+    display: block;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-grid a:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.image-grid img {
+    width: 100%;
+    height: 250px; /* Fixed height for standard grid images */
+    object-fit: cover; /* Ensures image covers the area, cropping if aspect ratio doesn't match */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-grid a:hover img {
+    transform: scale(1.05);
+}
+
+/* Specific Umemulo Gallery Layout */
+.umemulo-gallery-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min width 250px */
+    grid-auto-rows: minmax(200px, auto); /* Flexible row height for grid cells */
+    gap: 1rem;
+}
+
+.umemulo-gallery-layout .main-image {
+    grid-column: span 2;
+    grid-row: span 2;
+    height: 500px; /* Specific fixed height for main image */
+    object-fit: cover; /* Ensures image covers the area */
+}
+
+.umemulo-gallery-layout .side-image-top,
+.umemulo-gallery-layout .side-image-bottom {
+    height: 245px; /* Specific fixed height for side images */
+    object-fit: cover; /* Ensures image covers the area */
+}
+
+.umemulo-gallery-layout .accent-image {
+    grid-column: span 1;
+    grid-row: span 2;
+    height: 500px; /* Specific fixed height for accent image */
+    object-fit: cover; /* Ensures image covers the area */
+}
+
+/* CTA Section - kept from styles.css */
+#cta h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #f4f4f4;
+}
+
+#cta p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+/* Booking Form Styles  */
+#portfolio-booking h2 {
+    color: #f4f4f4; /* Light text for heading in dark section */
+}
+
+#portfolio-booking h2::after { 
+    background-color: #f4f4f4; /* Light line under heading */
+}
+
+#portfolio-booking p {
+    color: #ccc; /* Lighter text for paragraph in dark section */
+}
+
+/* Style for the Terms & Conditions page */
+
+/* Style the main heading */
+.container h2 {
+    color: #A0522D;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align:center;
+}
+
+/* Style the ordered list for the terms */
+.terms-list {
+    list-style-type: none; /* Removes the default numbers */
+    counter-reset: my-list-counter; /* Creates a custom counter */
+    padding: 0;
+    margin: 0;
+}
+
+/* Style each list item */
+.terms-list li {
+    counter-increment: my-list-counter; /* Increments the counter for each item */
+    margin-bottom: 1.5em; /* Adds space between each term */
+    position: relative;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333; /* Dark color for readability */
+}
+
+/* Add a divider between list items for better separation */
+.terms-list li + li {
+    padding-top: 1.5em; /* Adds space above the line */
+    border-top: 1px solid #eee; /* A light gray divider line */
+}
+
+
+/* Style for the terms page content container only */
+.terms-page .container.section-padding {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+
+/* Create the custom numbered bullet points */
+.terms-list li::before {
+    content: counter(my-list-counter) ". "; /* Displays the number and a period */
+    font-weight: bold;
+    color: #A0522D; /* The brand color for the numbers */
+    margin-right: 5px;
+}
+
+/* Base styles for footer */
+footer {
+    background-color: #333;
+    color: #f4f4f4;
+    padding: 40px 0;
+    font-size: 0.9em;
+}
+
+/* This is the default style for mobile devices (stacked and centered) */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all items horizontally */
+    gap: 30px;
+    margin-bottom: 30px;
+    text-align: center; /* Center text within each section */
+}
+
+/* Base footer section styles */
+.footer-section {
+    width: 100%; /* Take full width on mobile */
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: #FFD700;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.footer-section p,
+.footer-section ul {
+    margin-bottom: 10px;
+    color: #f4f4f4;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #f4f4f4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #FFD700;
+}
+
+.social-links img {
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    text-align: center;
+    color: #bbb;
+}
+
+/* Media query for larger screens (e.g., tablets and desktops) */
+@media (min-width: 768px) {
+    .footer-content {
+        /* This creates the three-column layout */
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: flex-start;
+        text-align: left; /* Aligns text in each column to the left by default */
+        gap: 50px;
+        max-width: 1200px;
+        margin: 0 auto 30px; /* Centers the whole footer content container */
+    }
+
+    /* Override the text alignment for the "Quick Links" and "Contact Us" sections */
+    .footer-section.quick-links {
+        text-align: center;
+    }
+
+    .footer-section.contact-info {
+        text-align: center;
+    }
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Keyframes for Fade-in-Up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start 20px below its final position */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at its original position */
+    }
+}
+
+/* Animation to the #about-content section */
+#about-content {
+    animation: fadeInUp 1s ease-out forwards; 
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header .container {
+        flex-wrap: wrap;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        order: 3;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav.nav-open {
+        display: flex;
+    }
+
+    #hero h1 {
+        font-size: 2.8em;
+    }
+
+    #hero p {
+        font-size: 1.2em;
+    }
+
+    .section-padding {
+        padding: 50px 0;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+
+    .social-links {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    
+    /* Dropdown CSS for mobile */
+    nav ul li.dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        width: 100%;
+        min-width: unset;
+        background-color: #333333; /* Dark background for mobile dropdown */
+        display: none;
+    }
+
+    .dropdown-content a {
+        padding: 10px 0;
+    }
+
+  
+    #why-choose-us h2 {
+        font-size: 2.2em;
+    }
+
+    #why-choose-us .features-grid {
+        grid-template-columns: 1fr; /* Stack features on small screens */
+    }
+
+    .testimonials {
+        grid-template-columns: 1fr; /* Stack testimonials on small screens */
+    }
+
+    blockquote {
+        margin: 30px 15px; /* Adjust margins for smaller screens */
+        padding: 20px 25px;
+        font-size: 1.1em;
+    }
+
+    
+}
