@@ -156,7 +156,12 @@ nav ul li a.active {
     display: none;
     font-size: 30px;
     cursor: pointer;
-    color: #f4f4f4; /* Light color for toggle icon */
+  
+    color: #333; 
+   
+    background: none;
+    border: none;
+    padding: 0; 
 }
 
 /* Dropdown CSS */
