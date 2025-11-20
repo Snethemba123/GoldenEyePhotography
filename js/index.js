@@ -1,16 +1,17 @@
-// Mobile Menu Toggle Logic
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('nav');
+document.addEventListener('DOMContentLoaded', () => {
+    // Select the new button and the nav list using the ID
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('#main-nav-list');
+    
+    if (menuToggle && navList) {
+        menuToggle.addEventListener('click', () => {
+            
+            // 1. Toggle the visual class 'nav-open' on the UL/NAV element
+            navList.classList.toggle('nav-open'); 
 
-if (menuToggle && nav) {
-    menuToggle.addEventListener('click', function() {
-        nav.classList.toggle('nav-open');
-    });
-
-    // Close nav when a link is clicked (for mobile menu)
-    nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function() {
-            nav.classList.remove('nav-open');
+            // 2. Toggle the ARIA expanded state for accessibility
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
         });
-    });
-}
+    }
+});
