@@ -161,34 +161,41 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/chosen logo i png.png" alt="Golden Eye Films Logo" style="height: 30px;">
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="dropdown">
-                        <a href="portfolio.html" class="dropbtn" id="portfolioDropdownLink">Portfolio</a>
-                        <div class="dropdown-content">
-                            <a href="portfolio.html#umemulo-album">Umemulo</a>
-                            <a href="portfolio.html#wedding-album">White Weddings</a>
-                            <a href="portfolio.html#umembeso-album">Umembeso</a>
-                            <a href="portfolio.html#graduation-album">Graduation Shoot</a>
-                        </div>
-                    </li>
-                    <li><a href="services.html">Services & Pricing</a></li>
-                    <li><a href="booking.html">Book Now</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html" class="active">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="menu-toggle">☰</div>
-        </div>
-    </header>
+  <header>
+  <div class="container">
+
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/chosen logo i png.png" alt="Golden Eye Films Logo">
+      </a>
+    </div>
+
+    <button class="menu-toggle">&#9776;</button>
+
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+
+        <li class="dropdown">
+          <a href="portfolio.html" class="dropbtn">Portfolio</a>
+          <div class="dropdown-content">
+            <a href="portfolio.html#umemulo-album">Umemulo</a>
+            <a href="portfolio.html#wedding-album">White Weddings</a>
+            <a href="portfolio.html#umembeso-album">Umembeso</a>
+            <a href="portfolio.html#graduation-album">Graduation Shoot</a>
+          </div>
+        </li>
+
+        <li><a href="services.html">Services & Pricing</a></li>
+        <li><a href="booking.html">Book Now</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
 
     <section class="page-hero"></section>
 
@@ -277,7 +284,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="js/index.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script>
