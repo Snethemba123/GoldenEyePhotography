@@ -1,21 +1,18 @@
-(function() {
-  const toggle = document.getElementById('menu-toggle');
+// Mobile menu toggle
+(function () {
+  const toggle = document.querySelector('.menu-toggle');
   const nav = document.getElementById('main-nav');
 
   if (!toggle || !nav) return;
 
-  toggle.addEventListener('click', function() {
-    const isOpen = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
+  toggle.addEventListener('click', function () {
+    nav.classList.toggle('open');
   });
 
-  // Optional: close menu when clicking a link (mobile UX)
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', function() {
-      if (nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
+  // Close menu when clicking a link
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
     });
   });
 })();
