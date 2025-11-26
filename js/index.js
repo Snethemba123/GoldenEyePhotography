@@ -19,17 +19,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   })();
 
-  // Enable dropdown tapping on mobile
-  document.querySelectorAll(".dropdown > a").forEach(dropBtn => {
-    dropBtn.addEventListener("click", function (e) {
-      const parent = this.parentElement;
+ // Mobile dropdown fix 
+const dropdowns = document.querySelectorAll(".dropdown");
 
-      // Mobile only
-      if (window.innerWidth < 769) {
-        e.preventDefault(); // prevent link from opening Portfolio page
-        parent.classList.toggle("open-dropdown");
-      }
+dropdowns.forEach(drop => {
+    const button = drop.querySelector(".dropbtn");
+
+    button.addEventListener("click", function (e) {
+
+        // Only apply on mobile
+        if (window.innerWidth < 769) {
+            e.preventDefault();
+
+            // Close other dropdowns
+            dropdowns.forEach(d => {
+                if (d !== drop) d.classList.remove("open-dropdown");
+            });
+
+            // Toggle current dropdown
+            drop.classList.toggle("open-dropdown");
+        }
     });
-  });
-
 });
