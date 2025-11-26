@@ -1,41 +1,61 @@
-/* Start of Merged JavaScript for site functionality */
 document.addEventListener('DOMContentLoaded', function () {
 
     const menuToggle = document.querySelector('.menu-toggle');
-    const navUl = document.querySelector('header nav ul');
+    const nav = document.querySelector('header nav');
+    const navUl = nav.querySelector('ul');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
 
     if (menuToggle && navUl) {
-        menuToggle.addEventListener('click', function () {
-            navUl.classList.toggle('active');
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('open'); // matches CSS: #main-nav.open
         });
 
-        // Close nav when a link is clicked
+        // Close mobile menu when a link is clicked
         navUl.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                navUl.classList.remove('active');
+                if (navUl.classList.contains('open')) {
+                    navUl.classList.remove('open');
+                }
             });
         });
     }
 
-
-    const dropdowns = document.querySelectorAll(".dropdown");
+   
     dropdowns.forEach(drop => {
-        const button = drop.querySelector(".dropbtn");
+        const dropBtn = drop.querySelector('.dropbtn');
 
-        button.addEventListener("click", function (e) {
-            if (window.innerWidth < 769) {
-                e.preventDefault();
+        if (!dropBtn) return; // safety check
+
+        dropBtn.addEventListener('click', (e) => {
+            if (window.innerWidth < 769) { // Mobile only
+                e.preventDefault(); // Prevent default link behavior
 
                 // Close other dropdowns
                 dropdowns.forEach(d => {
-                    if (d !== drop) d.classList.remove("open-dropdown");
+                    if (d !== drop) d.classList.remove('open-dropdown');
                 });
 
                 // Toggle current dropdown
-                drop.classList.toggle("open-dropdown");
+                drop.classList.toggle('open-dropdown');
             }
         });
     });
+
+
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth < 769) {
+            dropdowns.forEach(drop => {
+                const dropBtn = drop.querySelector('.dropbtn');
+                if (!drop.contains(e.target)) {
+                    drop.classList.remove('open-dropdown');
+                }
+            });
+        }
+    });
+
+});
+
 
     const portfolioAlbums = document.querySelectorAll('.portfolio-album');
     const portfolioFilterLinks = document.querySelectorAll('.portfolio-filter-link');
