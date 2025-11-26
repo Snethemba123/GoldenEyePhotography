@@ -1,35 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // ----- Mobile Menu Toggle -----
     const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('header nav');
-    const navUl = nav.querySelector('ul');
-    const dropdowns = document.querySelectorAll('.dropdown');
+    const mainNav = document.getElementById('main-nav');
 
-
-    if (menuToggle && navUl) {
+    if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', () => {
-            navUl.classList.toggle('open'); // matches CSS: #main-nav.open
+            mainNav.classList.toggle('open');
         });
 
         // Close mobile menu when a link is clicked
-        navUl.querySelectorAll('a').forEach(link => {
+        mainNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (navUl.classList.contains('open')) {
-                    navUl.classList.remove('open');
+                if (mainNav.classList.contains('open')) {
+                    mainNav.classList.remove('open');
                 }
             });
         });
     }
 
-   
+    // ----- Mobile Dropdowns -----
+    const dropdowns = document.querySelectorAll('.dropdown');
+
     dropdowns.forEach(drop => {
         const dropBtn = drop.querySelector('.dropbtn');
+        if (!dropBtn) return;
 
-        if (!dropBtn) return; // safety check
-
-        dropBtn.addEventListener('click', (e) => {
-            if (window.innerWidth < 769) { // Mobile only
-                e.preventDefault(); // Prevent default link behavior
+        dropBtn.addEventListener('click', function (e) {
+            if (window.innerWidth < 769) {
+                e.preventDefault(); // Prevent default link click
 
                 // Close other dropdowns
                 dropdowns.forEach(d => {
@@ -42,11 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-    document.addEventListener('click', (e) => {
+    // ----- Click outside closes mobile dropdown -----
+    document.addEventListener('click', function (e) {
         if (window.innerWidth < 769) {
             dropdowns.forEach(drop => {
-                const dropBtn = drop.querySelector('.dropbtn');
                 if (!drop.contains(e.target)) {
                     drop.classList.remove('open-dropdown');
                 }
@@ -55,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
 
 
     const portfolioAlbums = document.querySelectorAll('.portfolio-album');
