@@ -1,17 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Select the new button and the nav list using the ID
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navList = document.querySelector('#main-nav-list');
-    
-    if (menuToggle && navList) {
-        menuToggle.addEventListener('click', () => {
-            
-            // 1. Toggle the visual class 'nav-open' on the UL/NAV element
-            navList.classList.toggle('nav-open'); 
+(function() {
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
 
-            // 2. Toggle the ARIA expanded state for accessibility
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-        });
-    }
-});
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener('click', function() {
+    const isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Optional: close menu when clicking a link (mobile UX)
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', function() {
+      if (nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+})();
