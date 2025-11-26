@@ -1,8 +1,6 @@
 /* Start of Merged JavaScript for site functionality */
 document.addEventListener('DOMContentLoaded', function () {
-    // ==========================
-    // Mobile Menu Toggle Logic
-    // ==========================
+
     const menuToggle = document.querySelector('.menu-toggle');
     const navUl = document.querySelector('header nav ul');
 
@@ -19,9 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ==========================
-    // Mobile Dropdown Fix (Portfolio)
-    // ==========================
+
     const dropdowns = document.querySelectorAll(".dropdown");
     dropdowns.forEach(drop => {
         const button = drop.querySelector(".dropbtn");
@@ -41,9 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ==========================
-    // Portfolio Album Filtering (Option B)
-    // ==========================
     const portfolioAlbums = document.querySelectorAll('.portfolio-album');
     const portfolioFilterLinks = document.querySelectorAll('.portfolio-filter-link');
 
@@ -104,9 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial load
     handleInitialLoad();
 
-    // ==========================
-    // Booking Form Placeholder (Optional)
-    // ==========================
+
     const bookingForm = document.querySelector('.booking-form');
     const successMessage = document.querySelector('.success-message');
     const errorMessage = document.querySelector('.error-message');
@@ -134,4 +125,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-/* End of Merged JavaScript */
+
