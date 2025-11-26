@@ -235,6 +235,11 @@ nav ul li a.active {
     display: block;
 }
 
+.dropdown.open-dropdown .dropdown-content {
+    display: block;
+}
+
+
 #hero {
     background: url('../images/wedding/_MG_7168 (1).jpg') no-repeat center center / cover;
     color: #f4f4f4;
