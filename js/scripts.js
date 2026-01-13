@@ -94,21 +94,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Portfolio link click
     portfolioFilterLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            const albumId = this.dataset.albumId;
-            if (window.location.hash.substring(1) !== albumId) {
-                history.pushState(null, null, `#${albumId}`);
-            }
-            showAlbum(albumId);
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
 
-            // Close mobile menu if open
-            if (navUl.classList.contains('active')) {
-                navUl.classList.remove('active');
-            }
-        });
+        const albumId = this.dataset.albumId.toLowerCase();
+
+        if (window.location.hash.substring(1).toLowerCase() !== albumId) {
+            history.pushState(null, null, `#${albumId}`);
+        }
+
+        showAlbum(albumId);
     });
+});
 
     // Handle browser back/forward buttons
     window.addEventListener('hashchange', handleInitialLoad);
