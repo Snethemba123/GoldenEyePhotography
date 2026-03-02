@@ -6,14 +6,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('open');
+            mainNav.classList.toggle('nav-open');
         });
 
         // Close mobile menu when a link is clicked
         mainNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (mainNav.classList.contains('open')) {
-                    mainNav.classList.remove('open');
+                if (mainNav.classList.contains('nav-open')) {
+                    mainNav.classList.toggle('nav-open');
                 }
             });
         });
@@ -51,9 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
-
-});
-
 
 
     const portfolioAlbums = document.querySelectorAll('.portfolio-album');
@@ -95,24 +92,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     portfolioFilterLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
 
-        const albumId = this.dataset.albumId.toLowerCase();
+            const albumId = this.dataset.albumId.toLowerCase();
 
-        if (window.location.hash.substring(1).toLowerCase() !== albumId) {
-            history.pushState(null, null, `#${albumId}`);
-        }
+            if (window.location.hash.substring(1).toLowerCase() !== albumId) {
+                history.pushState(null, null, `#${albumId}`);
+            }
 
-        showAlbum(albumId);
-    });
-});
+            showAlbum(albumId);
+        });
+    }); 
 
     // Handle browser back/forward buttons
-    window.addEventListener('hashchange', handleInitialLoad);
+    window.addEventListener('hashchange', handleInitialLoad); 
 
     // Initial load
-    handleInitialLoad();
+    handleInitialLoad(); 
 
 
     const bookingForm = document.querySelector('.booking-form');
@@ -141,4 +138,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 5000);
         });
     }
-
+});
