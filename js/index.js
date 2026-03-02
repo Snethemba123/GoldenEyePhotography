@@ -1,43 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Mobile menu toggle
+  // ----- Mobile Menu Toggle -----
   (function () {
     const toggle = document.querySelector('.menu-toggle');
-   const nav = document.getElementById('main-nav');
-
-   if (!toggle || !nav) return;
+    const nav = document.getElementById('main-nav');
+    if (!toggle || !nav) return;
 
     toggle.addEventListener('click', function () {
       nav.classList.toggle('nav-open');
     });
 
-    // Close menu when clicking a link
     nav.querySelectorAll("a").forEach(link => {
-     link.addEventListener("click", () => {
-      nav.classList.remove("nav-open");
+      link.addEventListener("click", () => {
+        nav.classList.remove("nav-open");
       });
     });
- })();
+  })();
 
-// Mobile dropdown fix 
-const dropdowns = document.querySelectorAll(".dropdown");
+  // ----- Mobile Dropdowns -----
+  const dropdowns = document.querySelectorAll(".dropdown");
 
-dropdowns.forEach(drop => {
-  const button = drop.querySelector(".dropbtn");
+  dropdowns.forEach(drop => {
+    const button = drop.querySelector(".dropbtn");
+    if (!button) return; 
 
- button.addEventListener("click", function (e) {
+    button.addEventListener("click", function (e) {
+      if (window.innerWidth < 769) {
+        e.preventDefault();
 
-     // Only apply on mobile
-     if (window.innerWidth < 769) {
-          e.preventDefault();
+        dropdowns.forEach(d => {
+          if (d !== drop) d.classList.remove("open-dropdown");
+        });
 
-            // Close other dropdowns
-           dropdowns.forEach(d => {
-                if (d !== drop) d.classList.remove("open-dropdown");
-          });
-
-             // Toggle current dropdown
-       drop.classList.toggle("open-dropdown");
-  }
+        drop.classList.toggle("open-dropdown");
+      }
+    });
   });
+
+  // ----- Click outside closes dropdown -----
+  document.addEventListener("click", function (e) {
+    if (window.innerWidth < 769) {
+      dropdowns.forEach(drop => {
+        if (!drop.contains(e.target)) {
+          drop.classList.remove("open-dropdown");
+        }
+      });
+    }
+  });
+
 });
