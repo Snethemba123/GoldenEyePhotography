@@ -219,7 +219,7 @@ nav ul li a.active {
 }
 
 .dropdown-content a {
-    color: #fff;
+    color: #333 ! important;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -638,30 +638,54 @@ footer {
 @media (max-width: 768px) {
     header .container {
         flex-wrap: wrap;
+        position: relative; /* Anchor for the absolute menu */
     }
 
-    nav {
-        display: none;
+    /* Target the ID your JS uses */
+    #main-nav {
+        display: none; 
         width: 100%;
-        order: 3;
+        position: absolute;
+        top: 100%; /* Sits exactly under header */
+        left: 0;
+        background-color: #f4f4f4;
+        z-index: 9999; /* Higher than images */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    nav ul {
+    /* Match the class your JS toggles */
+    #main-nav.nav-open {
+        display: block !important;
+    }
+
+    #main-nav ul {
         flex-direction: column;
         align-items: center;
-        padding-top: 20px;
+        padding: 20px 0;
     }
 
-    nav ul li {
+    #main-nav ul li {
         margin: 10px 0;
+        width: 100%;
+        text-align: center;
     }
 
     .menu-toggle {
         display: block;
+        cursor: pointer;
+        z-index: 10000;
     }
 
-    nav.nav-open {
-        display: flex;
+    /* --- Dropdown Fix --- */
+    .dropdown-content {
+        position: static; /* Pushes content down so links stay clickable */
+        display: none;
+        background-color: #eee;
+        width: 100%;
+    }
+
+    .dropdown.open-dropdown .dropdown-content {
+        display: block !important;
     }
 
     #hero h1 {
@@ -692,26 +716,6 @@ footer {
     .social-links {
         text-align: center;
         margin-top: 15px;
-    }
-
-    
-    /* Dropdown CSS for mobile */
-    nav ul li.dropdown {
-        width: 100%;
-        text-align: center;
-    }
-
-    .dropdown-content {
-        position: static;
-        box-shadow: none;
-        width: 100%;
-        min-width: unset;
-        background-color: #333333; /* Dark background for mobile dropdown */
-        display: none;
-    }
-
-    .dropdown-content a {
-        padding: 10px 0;
     }
 
   
