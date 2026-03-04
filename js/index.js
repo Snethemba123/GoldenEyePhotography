@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
 
   // ----- Mobile Menu Toggle -----
   (function () {
@@ -98,4 +98,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-});
+}); */
