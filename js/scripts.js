@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ----- 1. Mobile Menu Toggle (The Hamburger) -----
-    const menuToggle = document.querySelector('.menu-toggle');
+    // 1. SELECTORS
+    const menuToggle = document.getElementById('menu-toggle') || document.querySelector('.menu-toggle');
     const mainNav = document.getElementById('main-nav');
+    const dropdowns = document.querySelectorAll('.dropdown');
 
+    // 2. MOBILE MENU TOGGLE
     if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -11,87 +13,88 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ----- 2. Mobile Dropdowns (The "Click to Open" Fix) -----
-    const dropdowns = document.querySelectorAll('.dropdown');
-
+    // 3. DROPDOWN LOGIC (Mobile Only)
     dropdowns.forEach(drop => {
         const dropBtn = drop.querySelector('.dropbtn');
-        
         if (dropBtn) {
             dropBtn.addEventListener('click', function (e) {
-                // Only run this logic on mobile screens
                 if (window.innerWidth < 769) {
-                    // Prevent the link from jumping to a new page immediately
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    // Close any OTHER open dropdowns first
-                    dropdowns.forEach(other => {
-                        if (other !== drop) other.classList.remove('open-dropdown');
-                    });
-
-                    // Toggle THIS dropdown
-                    drop.classList.toggle('open-dropdown');
+                    // Check if we're clicking the same dropdown that's already open
+                    const isOpen = drop.classList.contains('open-dropdown');
+                    
+                    if (!isOpen) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Close others
+                        dropdowns.forEach(other => other.classList.remove('open-dropdown'));
+                        // Open this one
+                        drop.classList.add('open-dropdown');
+                    }
                 }
             });
         }
     });
 
-    // ----- 3. Close Menu when clicking a final link -----
-    const navLinks = mainNav.querySelectorAll('a:not(.dropbtn)');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mainNav.classList.remove('nav-open');
-            dropdowns.forEach(d => d.classList.remove('open-dropdown'));
-        });
-    });
-
-    // ----- 4. Click Outside to Close Everything -----
-    document.addEventListener('click', (e) => {
-        if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-            mainNav.classList.remove('nav-open');
-            dropdowns.forEach(d => d.classList.remove('open-dropdown'));
-        }
-    });
-
-    // ----- 5. Portfolio Album Filter -----
+    // 4. PORTFOLIO ALBUM FILTER
     const portfolioAlbums = document.querySelectorAll('.portfolio-album');
-    const portfolioFilterLinks = document.querySelectorAll('.portfolio-filter-link');
+    const navLinks = document.querySelectorAll('#main-nav a');
 
     function showAlbum(albumId) {
-        if (!albumId) return;
+        if (!albumId || portfolioAlbums.length === 0) return;
         
-        portfolioAlbums.forEach(album => {
-            album.style.display = 'none';
-            album.classList.remove('active');
-        });
+        // Remove the '#' if the ID came from a hash
+        const cleanId = albumId.replace('#', '');
+        const targetAlbum = document.getElementById(cleanId);
 
-        const targetAlbum = document.getElementById(albumId);
         if (targetAlbum) {
+            // Hide all albums
+            portfolioAlbums.forEach(album => {
+                album.style.display = 'none';
+                album.classList.remove('active');
+            });
+
+            // Show target
             targetAlbum.style.display = 'block';
             targetAlbum.classList.add('active');
         }
-
-        portfolioFilterLinks.forEach(link => {
-            link.classList.toggle('active', link.dataset.albumId === albumId);
-        });
     }
 
-    portfolioFilterLinks.forEach(link => {
+    // Handle clicks for filtering
+    navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const id = this.dataset.albumId;
-            showAlbum(id);
-            history.pushState(null, null, '#' + id);
+            const href = this.getAttribute('href');
+            if (href.includes('#')) {
+                const id = href.split('#')[1];
+                if (document.getElementById(id)) {
+                    // Only prevent default if we are on the portfolio page
+                    if (window.location.pathname.includes('portfolio.html') || portfolioAlbums.length > 0) {
+                        e.preventDefault();
+                        showAlbum(id);
+                        // Close menu on mobile after selection
+                        mainNav.classList.remove('nav-open');
+                        dropdowns.forEach(d => d.classList.remove('open-dropdown'));
+                    }
+                }
+            }
         });
     });
 
-    // Initial Load
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        showAlbum(hash);
-    } else if (portfolioAlbums.length > 0) {
-        showAlbum('umemulo-album'); // Default
-    }
+    // 5. CLICK OUTSIDE TO CLOSE
+    document.addEventListener('click', (e) => {
+        if (mainNav && !mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+            mainNav.classList.remove('nav-open');
+        }
+        dropdowns.forEach(d => {
+            if (!d.contains(e.target)) d.classList.remove('open-dropdown');
+        });
+    });
 
+    // 6. INITIAL LOAD (Keeping your specific names)
+    const currentHash = window.location.hash;
+    if (currentHash && document.querySelector(currentHash)) {
+        showAlbum(currentHash);
+    } else if (portfolioAlbums.length > 0) {
+        // Defaulting to your spelling: "umemolo-album"
+        showAlbum('umemolo-album'); 
+    }
 });
