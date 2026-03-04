@@ -89,12 +89,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 6. INITIAL LOAD (Keeping your specific names)
+   // 6. INITIAL LOAD 
     const currentHash = window.location.hash;
-    if (currentHash && document.querySelector(currentHash)) {
+    
+    // Check if the URL has a hash (like #wedding-album)
+    if (currentHash && document.getElementById(currentHash.replace('#', ''))) {
         showAlbum(currentHash);
     } else if (portfolioAlbums.length > 0) {
-        // Defaulting to your spelling: "umemolo-album"
-        showAlbum('umemolo-album'); 
+        // This MUST match your HTML ID exactly
+        // Since your HTML says "umemulo-album", we use that here:
+        showAlbum('umemulo-album'); 
     }
 });
