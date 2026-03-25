@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary SEO -->
-    <title>Portfolio | Golden Eye Films - Photographer &  Vidiographer</title>
+    <title>Portfolio | Golden Eye Films - Photographer & Videographer</title>
     <meta name="description" content="View Golden Eye Films photography portfolio. Stunning wedding, umemulo, umembeso and graduation photography across KwaZulu-Natal.">
     <meta name="keywords" content="photography portfolio KwaZulu-Natal, wedding photography portfolio, umemulo photography, umembeso photography, graduation photography Golden Eye Films">
     <meta name="author" content="Golden Eye Films">
@@ -31,6 +31,133 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Category Selection Section ── */
+        #portfolio-categories {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        #portfolio-categories h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        #portfolio-categories p {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            aspect-ratio: 3/4;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .category-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+            padding: 30px 20px 20px;
+            color: white;
+            text-align: left;
+        }
+
+        .category-card-overlay h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 4px;
+        }
+
+        .category-card-overlay span {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .category-card-overlay .arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            color: #222;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .category-card:hover .arrow {
+            background: #f0c040;
+        }
+
+        /* ── Back to Categories Button ── */
+        .back-to-categories {
+            display: inline-block;
+            margin: 20px 0 0 0;
+            padding: 10px 22px;
+            background: #222;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .back-to-categories:hover {
+            background: #f0c040;
+            color: #222;
+        }
+
+        /* ── Album section title style ── */
+        .album-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,15 +177,10 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
 
-                <li class="dropdown">
-                    <a href="portfolio.html" class="dropbtn">Portfolio</a>
-                    <div class="dropdown-content">
-                        <a href="#umemulo-album">Umemulo</a>
-                        <a href="#wedding-album">White Weddings</a>
-                        <a href="#umembeso-album">Umembeso</a>
-                        <a href="#gradution-album">Graduation Shoot</a>
-                    </div>
-                </li>
+                <li><a href="#umemulo-album">Umemulo</a></li>
+                <li><a href="#wedding-album">White Weddings</a></li>
+                <li><a href="#umembeso-album">Umembeso</a></li>
+                <li><a href="#gradution-album">Graduations</a></li>
 
                 <li><a href="services.html">Services & Pricing</a></li>
                 <li><a href="booking.html">Book Now</a></li>
@@ -72,329 +194,327 @@
 
 <main>
 
+    <!-- ======================= CATEGORY SELECTION ======================= -->
+    <section id="portfolio-categories">
+        <div class="container">
+            <h2>Our Portfolio</h2>
+            <p>Choose a category to explore our work</p>
+
+            <div class="category-grid">
+
+                <!-- Umemulo -->
+                <a href="#umemulo-album" class="category-card">
+                    <img src="images/Umemulo/_MG_1077.jpg" alt="Umemulo Photography">
+                    <div class="category-card-overlay">
+                        <h3>Umemulo</h3>
+                        <span>Traditional Ceremonies</span>
+                        <div class="arrow">→</div>
+                    </div>
+                </a>
+
+                <!-- Weddings -->
+                <a href="#wedding-album" class="category-card">
+                    <img src="images/wedding/_MG_0138 (1).jpg" alt="Wedding Photography">
+                    <div class="category-card-overlay">
+                        <h3>White Weddings</h3>
+                        <span>Timeless Moments</span>
+                        <div class="arrow">→</div>
+                    </div>
+                </a>
+
+                <!-- Umembeso -->
+                <a href="#umembeso-album" class="category-card">
+                    <img src="images/umembeso/_MG_3134.jpg" alt="Umembeso Photography">
+                    <div class="category-card-overlay">
+                        <h3>Umembeso</h3>
+                        <span>Cultural Traditions</span>
+                        <div class="arrow">→</div>
+                    </div>
+                </a>
+
+                <!-- Graduation -->
+                <a href="#gradution-album" class="category-card">
+                    <img src="images/Gradution/_MG_1905.jpg" alt="Graduation Photography">
+                    <div class="category-card-overlay">
+                        <h3>Graduations</h3>
+                        <span>Academic Achievements</span>
+                        <div class="arrow">→</div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= ALBUMS ======================= -->
     <section id="portfolio" class="section-padding">
         <div class="container text-center">
-            <h2>Our Portfolio: Capturing Diverse Stories</h2>
+            <h2>Our Galleries</h2>
             <p>Explore our galleries showcasing the beautiful moments we've had the honor to capture.</p>
         </div>
 
         <!-- ======================= UMEMULO ======================= -->
         <div class="portfolio-album container section-padding" id="umemulo-album">
-            <h3>Umemulo Ceremonies</h3>
+            <div class="album-header">
+                <h3>Umemulo Ceremonies</h3>
+                <a href="#portfolio-categories" class="back-to-categories">↑ Back to Categories</a>
+            </div>
             <p class="album-description">Capturing the vibrant traditions and joyous celebrations of Umemulo.</p>
 
             <div class="image-grid umemulo-gallery-layout">
-
-                <!-- All Umemulo images -->
-              
                 <a href="images/Umemulo/_MG_1077.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1077.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1670.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1670.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1002 (2).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1002 (2).jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1025 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1025 (1).jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1032.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1032.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1041 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1041 (1).jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1610.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1610.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1621.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1621.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1625 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1625 (1).jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1633.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1633.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1857.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1857.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_1869.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_1869.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/_MG_2270.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/_MG_2270.jpg" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/IMG_1455 (1)-1.JPG" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/IMG_1455 (1)-1.JPG" alt="Umemulo Photo">
                 </a>
-
                 <a href="images/Umemulo/IMG_1513-1.JPG" data-lightbox="umemulo" data-title="IntombiYomzulu">
                     <img src="images/Umemulo/IMG_1513-1.JPG" alt="Umemulo Photo">
                 </a>
-
             </div>
         </div>
-
 
         <!-- ======================= WEDDINGS ======================= -->
         <div class="portfolio-album container section-padding" id="wedding-album">
-            <h3>White Weddings</h3>
+            <div class="album-header">
+                <h3>White Weddings</h3>
+                <a href="#portfolio-categories" class="back-to-categories">↑ Back to Categories</a>
+            </div>
             <p class="album-description">Timeless moments, beautifully captured to cherish forever.</p>
-                
+
             <div class="image-grid">
-
-                    <a href="images/wedding/_MG_0138 (1).jpg" data-lightbox="wedding-gallery" data-title="The Happy Couple">
-                        <img src="images/wedding/_MG_0138 (1).jpg" alt="Wedding Photo 1">
-                    </a>
-                    
-                    <a href="images/wedding/_MG_0142.jpg" data-lightbox="wedding-gallery" data-title="Wife And Husband">
-                        <img src="images/wedding/_MG_0142.jpg" alt="Wedding Photo 2">
-                    </a>
-
-                    <a href="images/wedding/_MG_0474.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                        <img src="images/wedding/_MG_0474.jpg" alt="Wedding Photo 2">
-                    </a>
-
-                    <a href="images/wedding/_MG_0492.jpg" data-lightbox="wedding-gallery" data-title="Couple">
-                        <img src="images/wedding/_MG_0492.jpg" alt="Wedding Photo 4">
-                    </a>
-
-                    <a href="images/wedding/_MG_0500 (1).jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                        <img src="images/wedding/_MG_0500 (1).jpg" alt="Wedding Photo 5">
-                    </a>
-
-                    <a href="images/wedding/_MG_0530.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
-                        <img src="images/wedding/_MG_0530.jpg" alt="Wedding Photo 6">
-                    </a>
-
-                    <a href="images/wedding/_MG_0535.jpg" data-lightbox="wedding-gallery" data-title="The Happy Couple">
-                        <img src="images/wedding/_MG_0535.jpg" alt="Wedding Photo 1">
-                    </a>
-
-                    <a href="images/wedding/_MG_0609 (1).jpg" data-lightbox="wedding-gallery" data-title="Wife And Husband">
-                        <img src="images/wedding/_MG_0609 (1).jpg" alt="Wedding Photo 2">
-                    </a>
-
-                    <a href="images/wedding/_MG_6570 (2).jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                        <img src="images/wedding/_MG_6570 (2).jpg" alt="Wedding Photo 2">
-                    </a>
-
-                    <a href="images/wedding/_MG_7162 (1) (1).jpg" data-lightbox="wedding-gallery" data-title="Couple">
-                        <img src="images/wedding/_MG_7162 (1) (1).jpg" alt="Wedding Photo 4">
-                    </a>
-
-                    <a href="images/wedding/_MG_7164.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                        <img src="images/wedding/_MG_7164.jpg" alt="Wedding Photo 5">
-                    </a>
-
-                    <a href="images/wedding/_MG_7165.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
-                        <img src="images/wedding/_MG_7165.jpg" alt="Wedding Photo 6">
-                    </a>
-
-                    <a href="images/wedding/_MG_7168 (1).jpg" data-lightbox="wedding-gallery" data-title="Couple">
-                        <img src="images/wedding/_MG_7168 (1).jpg" alt="Wedding Photo 4">
-                    </a>
-
-                    <a href="images/wedding/_MG_7190.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                        <img src="images/wedding/_MG_7190.jpg" alt="Wedding Photo 5">
-                    </a>
-
-                    <a href="images/wedding/_MG_7199.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
-                        <img src="images/wedding/_MG_7199.jpg" alt="Wedding Photo 6">
-                    </a>
-
-                    <a href="images/wedding/_MG_7226.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                        <img src="images/wedding/_MG_7226.jpg" alt="Wedding Photo 5">
-                    </a>
-                
-                </div>
-            </div>
-
-            <!-- Umembeso Album -->
-            <div class="portfolio-album container section-padding" id="umembeso-album">
-                <h3>Umembeso Ceremonies</h3>
-                <p class="album-description">Capturing the warmth and significance of Umembeso traditions.</p>
-                <div class="image-grid">
-
-                     <a href="images/umembeso/_MG_3143.jpg" data-lightbox="umembeso-gallery" data-title="Cultural Exchange">
-                        <img src="images/umembeso/_MG_3143.jpg" alt="Umembeso Ceremony Photo 3">
-                    </a>
-
-                    <a href="images/umembeso/_MG_3134.jpg" data-lightbox="umembeso-gallery" data-title="Traditional Attire">
-                        <img src="images/umembeso/_MG_3134.jpg" alt="Umembeso Ceremony Photo 1">
-                    </a>
-
-                    <a href="images/umembeso/_MG_3139.jpg" data-lightbox="umembeso-gallery" data-title="Family Gathering">
-                        <img src="images/umembeso/_MG_3139.jpg" alt="Umembeso Ceremony Photo 2">
-                    </a>
-
-                    <a href="images/umembeso/_MG_3165.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_3165.jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-
-                    <a href="images/umembeso/_MG_3199.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_3199.jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-
-                    <a href="images/umembeso/_MG_3157.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_3157.jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-
-
-                    <a href="images/umembeso/_MG_4882 (1).jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_4882 (1).jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-                    
-                    <a href="images/umembeso/_MG_4800.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_4800.jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-                
-                <a href="images/umembeso/_MG_4818.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_4818.jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-                
-                    <a href="images/umembeso/_MG_4859 (1).jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_4859 (1).jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-                
-                    <a href="images/umembeso/_MG_4867.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_4867.jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-                
-                    
-                
-                    <a href="images/umembeso/_MG_4889.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                        <img src="images/umembeso/_MG_4889.jpg" alt="Umembeso Ceremony Photo 4">
-                    </a>
-                
-                </div>
-            </div>
-
-            <!-- Graduation Album -->
-            <div class="portfolio-album container section-padding" id="gradution-album">
-                <h3>Gradution Shoots</h3>
-                <p class="album-description">Celebrate your academic achievement with professional and memorable graduation photos.</p>
-                <div class="image-grid">
-                    <a href="images/Gradution/_MG_1905.jpg" data-lightbox="graduation-gallery" data-title="Cap Toss">
-                        <img src="images/Gradution/_MG_1905.jpg" alt="Graduation Photo 1">
-                    </a>
-                    <a href="images/Gradution/_MG_1906 (1).jpg" data-lightbox="graduation-gallery" data-title="Proud Graduate">
-                        <img src="images/Gradution/_MG_1906 (1).jpg" alt="Graduation Photo 2">
-                    </a>
-                    <a href="images/Gradution/_MG_1908 (1).jpg" data-lightbox="graduation-gallery" data-title="Family Support">
-                        <img src="images/Gradution/_MG_1908 (1).jpg" alt="Graduation Photo 3">
-                    </a>
-                  
-                    <a href="images/Gradution/_MG_2024 (1).jpg" data-lightbox="graduation-gallery" data-title="Celebrating Success">
-                        <img src="images/Gradution/_MG_2024 (1).jpg" alt="Graduation Photo 5">
-                    </a>
-                    <a href="images/Gradution/_MG_2026.jpg" data-lightbox="graduation-gallery" data-title="Campus Shot">
-                        <img src="images/Gradution/_MG_2026.jpg" alt="Graduation Photo 6">
-                    </a>
-                      <a href="images/Gradution/_MG_2099.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                        <img src="images/Gradution/_MG_2099.jpg" alt="Graduation Photo 4">
-                    </a>
-
-                    <a href="images/Gradution/_MG_2100.jpg" data-lightbox="graduation-gallery" data-title="Celebrating Success">
-                        <img src="images/Gradution/_MG_2100.jpg" alt="Graduation Photo 5">
-                    </a>
-                    <a href="images/Gradution/_MG_2193.jpg" data-lightbox="graduation-gallery" data-title="Campus Shot">
-                        <img src="images/Gradution/_MG_2193.jpg" alt="Graduation Photo 6">
-                    </a>
-                      <a href="images/Gradution/_MG_2195.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                        <img src="images/Gradution/_MG_2195.jpg" alt="Graduation Photo 4">
-                    </a>
-
-                    <a href="images/Gradution/_MG_9786.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                        <img src="images/Gradution/_MG_9786.jpg" alt="Graduation Photo 4">
-                    </a>
-
-                    <a href="images/Gradution/_MG_9804.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                        <img src="images/Gradution/_MG_9804.jpg" alt="Graduation Photo 4">
-                    </a>
-
-                    <a href="images/Gradution/_MG_9834.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                        <img src="images/Gradution/_MG_9834.jpg" alt="Graduation Photo 4">
-                    </a>
-
-                    <a href="images/Gradution/_MG_9845.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                        <img src="images/Gradution/_MG_9845.jpg" alt="Graduation Photo 4">
-                    </a>
-
-                    <a href="images/Gradution/_MG_9866.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                        <img src="images/Gradution/_MG_9866.jpg" alt="Graduation Photo 4">
-                    </a>
-
-                    <a href="images/Gradution/_MG_9906.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                        <img src="images/Gradution/_MG_9906.jpg" alt="Graduation Photo 4">
-                    </a>
-                </div>
-            </div>
-
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section about-us">
-                    <h3>Golden Eye Films</h3>
-                    <p>Specializing in capturing the heart and soul of your most cherished moments.</p>
-                </div>
-                <div class="footer-section quick-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="booking.html">Book Now</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section contact-info">
-                    <h3>Contact Us</h3>
-                    <p>Email: goldeneyefilms2@gmail.com</p>
-                    <p>Phone: +27 71 833 9470 </p>
-
-                    <div class="social-links">
-                        <!-- placeholders for social media icons -->
-                       <a href="https://wa.me/27718339470" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M12 2C6.477 2 2 6.477 2 12c0 2.233.72 4.316 2.012 5.992L2.001 22l4.498-2.008A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
-                                <path d="M17.5 15.5c-.328-.164-.995-.494-1.14-.549-.145-.055-.25-.082-.355.082-.105.164-.407.494-.499.599-.092.105-.184.118-.344.037-.16-.082-.676-.248-1.284-.792-.47-.417-.788-.933-.879-1.082-.092-.15-.009-.23.073-.312.079-.079.176-.205.263-.308.087-.105.116-.184.175-.308.058-.124.029-.23-.015-.312-.044-.082-.387-.933-.53-.933-.143 0-.25.062-.337.124-.087.062-.204.148-.308.263-.104.116-.226.257-.226.355 0 .092.145.494.204.599.059.105.116.124.226.226.109.105.812 1.34 1.966 1.834 1.154.495 1.154.344 1.36.248.204-.096.657-.26.837-.324.18-.063.29-.02.417.062.125.082.78 1.05.78 1.05.002.003.003.006.005.008z"/>
-                            </svg>
-                        </a>
-
-                        <a href="https://www.facebook.com/profile.php?id=100069323886955&mibextid=ZbWKwL" target="_blank">
-    <img src="https://placehold.co/24x24/1877F2/ffffff?text=FB" alt="Facebook">
-</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2025 Golden Eye Films. All rights reserved. Designed by Snethemba Shangase
+                <a href="images/wedding/_MG_0138 (1).jpg" data-lightbox="wedding-gallery" data-title="The Happy Couple">
+                    <img src="images/wedding/_MG_0138 (1).jpg" alt="Wedding Photo 1">
+                </a>
+                <a href="images/wedding/_MG_0142.jpg" data-lightbox="wedding-gallery" data-title="Wife And Husband">
+                    <img src="images/wedding/_MG_0142.jpg" alt="Wedding Photo 2">
+                </a>
+                <a href="images/wedding/_MG_0474.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
+                    <img src="images/wedding/_MG_0474.jpg" alt="Wedding Photo 3">
+                </a>
+                <a href="images/wedding/_MG_0492.jpg" data-lightbox="wedding-gallery" data-title="Couple">
+                    <img src="images/wedding/_MG_0492.jpg" alt="Wedding Photo 4">
+                </a>
+                <a href="images/wedding/_MG_0500 (1).jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
+                    <img src="images/wedding/_MG_0500 (1).jpg" alt="Wedding Photo 5">
+                </a>
+                <a href="images/wedding/_MG_0530.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
+                    <img src="images/wedding/_MG_0530.jpg" alt="Wedding Photo 6">
+                </a>
+                <a href="images/wedding/_MG_0535.jpg" data-lightbox="wedding-gallery" data-title="The Happy Couple">
+                    <img src="images/wedding/_MG_0535.jpg" alt="Wedding Photo 7">
+                </a>
+                <a href="images/wedding/_MG_0609 (1).jpg" data-lightbox="wedding-gallery" data-title="Wife And Husband">
+                    <img src="images/wedding/_MG_0609 (1).jpg" alt="Wedding Photo 8">
+                </a>
+                <a href="images/wedding/_MG_6570 (2).jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
+                    <img src="images/wedding/_MG_6570 (2).jpg" alt="Wedding Photo 9">
+                </a>
+                <a href="images/wedding/_MG_7162 (1) (1).jpg" data-lightbox="wedding-gallery" data-title="Couple">
+                    <img src="images/wedding/_MG_7162 (1) (1).jpg" alt="Wedding Photo 10">
+                </a>
+                <a href="images/wedding/_MG_7164.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
+                    <img src="images/wedding/_MG_7164.jpg" alt="Wedding Photo 11">
+                </a>
+                <a href="images/wedding/_MG_7165.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
+                    <img src="images/wedding/_MG_7165.jpg" alt="Wedding Photo 12">
+                </a>
+                <a href="images/wedding/_MG_7168 (1).jpg" data-lightbox="wedding-gallery" data-title="Couple">
+                    <img src="images/wedding/_MG_7168 (1).jpg" alt="Wedding Photo 13">
+                </a>
+                <a href="images/wedding/_MG_7190.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
+                    <img src="images/wedding/_MG_7190.jpg" alt="Wedding Photo 14">
+                </a>
+                <a href="images/wedding/_MG_7199.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
+                    <img src="images/wedding/_MG_7199.jpg" alt="Wedding Photo 15">
+                </a>
+                <a href="images/wedding/_MG_7226.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
+                    <img src="images/wedding/_MG_7226.jpg" alt="Wedding Photo 16">
+                </a>
             </div>
         </div>
-    </footer>
 
-    <!-- Lightbox JS CDN (requires jQuery, so using the plus-jquery version) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-<script src="js/scripts.js" defer></script>
+        <!-- ======================= UMEMBESO ======================= -->
+        <div class="portfolio-album container section-padding" id="umembeso-album">
+            <div class="album-header">
+                <h3>Umembeso Ceremonies</h3>
+                <a href="#portfolio-categories" class="back-to-categories">↑ Back to Categories</a>
+            </div>
+            <p class="album-description">Capturing the warmth and significance of Umembeso traditions.</p>
+            <div class="image-grid">
+                <a href="images/umembeso/_MG_3143.jpg" data-lightbox="umembeso-gallery" data-title="Cultural Exchange">
+                    <img src="images/umembeso/_MG_3143.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_3134.jpg" data-lightbox="umembeso-gallery" data-title="Traditional Attire">
+                    <img src="images/umembeso/_MG_3134.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_3139.jpg" data-lightbox="umembeso-gallery" data-title="Family Gathering">
+                    <img src="images/umembeso/_MG_3139.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_3165.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_3165.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_3199.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_3199.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_3157.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_3157.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_4882 (1).jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_4882 (1).jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_4800.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_4800.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_4818.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_4818.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_4859 (1).jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_4859 (1).jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_4867.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_4867.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+                <a href="images/umembeso/_MG_4889.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
+                    <img src="images/umembeso/_MG_4889.jpg" alt="Umembeso Ceremony Photo">
+                </a>
+            </div>
+        </div>
 
-</body>
-</html>
+        <!-- ======================= GRADUATION ======================= -->
+        <div class="portfolio-album container section-padding" id="gradution-album">
+            <div class="album-header">
+                <h3>Graduation Shoots</h3>
+                <a href="#portfolio-categories" class="back-to-categories">↑ Back to Categories</a>
+            </div>
+            <p class="album-description">Celebrate your academic achievement with professional and memorable graduation photos.</p>
+            <div class="image-grid">
+                <a href="images/Gradution/_MG_1905.jpg" data-lightbox="graduation-gallery" data-title="Cap Toss">
+                    <img src="images/Gradution/_MG_1905.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_1906 (1).jpg" data-lightbox="graduation-gallery" data-title="Proud Graduate">
+                    <img src="images/Gradution/_MG_1906 (1).jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_1908 (1).jpg" data-lightbox="graduation-gallery" data-title="Family Support">
+                    <img src="images/Gradution/_MG_1908 (1).jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_2024 (1).jpg" data-lightbox="graduation-gallery" data-title="Celebrating Success">
+                    <img src="images/Gradution/_MG_2024 (1).jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_2026.jpg" data-lightbox="graduation-gallery" data-title="Campus Shot">
+                    <img src="images/Gradution/_MG_2026.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_2099.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
+                    <img src="images/Gradution/_MG_2099.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_2100.jpg" data-lightbox="graduation-gallery" data-title="Celebrating Success">
+                    <img src="images/Gradution/_MG_2100.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_2193.jpg" data-lightbox="graduation-gallery" data-title="Campus Shot">
+                    <img src="images/Gradution/_MG_2193.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_2195.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
+                    <img src="images/Gradution/_MG_2195.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_9786.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
+                    <img src="images/Gradution/_MG_9786.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_9804.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
+                    <img src="images/Gradution/_MG_9804.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_9834.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
+                    <img src="images/Gradution/_MG_9834.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_9845.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
+                    <img src="images/Gradution/_MG_9845.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_9866.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
+                    <img src="images/Gradution/_MG_9866.jpg" alt="Graduation Photo">
+                </a>
+                <a href="images/Gradution/_MG_9906.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
+                    <img src="images/Gradution/_MG_9906.jpg" alt="Graduation Photo">
+                </a>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about-us">
+                <h3>Golden Eye Films</h3>
+                <p>Specializing in capturing the heart and soul of your most cherished moments.</p>
+            </div>
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="booking.html">Book Now</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-info">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95f2faf9f1f0fbf0ecf0f3fcf9f8e6a7d5f2f8f4fcf9bbf6faf8">[email&#160;protected]</a></p>
+                <p>Phone: +27 71 833 9470</p>
+                <div class="social-links">
+                    <a href="https://wa.me/27718339470" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 2.233.72 4.316 2.012 5.992L2.001 22l4.498-2.008A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                            <path d="M17.5 15.5c-.328-.164-.995-.494-1.14-.549-.145-.055-.25-.082-.355.082-.105.164-.407.494-.499.599-.092.105-.184.118-.344.037-.16-.082-.676-.248-1.284-.792-.47-.417-.788-.933-.879-1.082-.092-.15-.009-.23.073-.312.079-.079.176-.205.263-.308.087-.105.116-.184.175-.308.058-.124.029-.23-.015-.312-.044-.082-.387-.933-.53-.933-.143 0-.25.062-.337.124-.087.062-.204.148-.308.263-.104.116-.226.257-.226.355 0 .092.145.494.204.599.059.105.116.124.226.226.109.105.812 1.34 1.966 1.834 1.154.495 1.154.344 1.36.248.204-.096.657-.26.837-.324.18-.063.29-.02.417.062.125.082.78 1.05.78 1.05.002.003.003.006.005.008z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100069323886955&mibextid=ZbWKwL" target="_blank">
+                        <img src="https://placehold.co/24x24/1877F2/ffffff?text=FB" alt="Facebook">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Golden Eye Films. All rights reserved. Designed by Snethemba Shangase
+        </div>
+    </div>
+</footer>
+
+<!-- Lightbox JS -->
+<script data-cfasync="false" src="/cdn-cgi/s
