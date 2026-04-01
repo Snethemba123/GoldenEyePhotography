@@ -10,46 +10,24 @@
     <meta name="keywords" content="photography portfolio KwaZulu-Natal, wedding photography portfolio, umemulo photography, umembeso photography, graduation photography Golden Eye Films">
     <meta name="author" content="Golden Eye Films">
 
-    <!-- Open Graph (WhatsApp/Facebook sharing) -->
+    <!-- Open Graph -->
     <meta property="og:title" content="Portfolio | Golden Eye Films">
     <meta property="og:description" content="View our stunning photography portfolio — weddings, umemulo, umembeso and graduations across KwaZulu-Natal.">
     <meta property="og:image" content="images/chosen logo i png.png">
     <meta property="og:url" content="https://www.goldeneyefilms.co.za/portfolio.html">
     <meta property="og:type" content="website">
 
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://www.goldeneyefilms.co.za/portfolio.html">
-
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="CSS/style.css">
-
-    <!-- Favicon -->
     <link rel="icon" href="images/favicon.png" type="image/png">
-
-    <!-- Lightbox -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ── Category Selection Section ── */
-        #portfolio-categories {
-            padding: 60px 0 40px;
-            text-align: center;
-            background: #f9f9f9;
-        }
-
-        #portfolio-categories h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        #portfolio-categories p {
-            color: #666;
-            margin-bottom: 40px;
-            font-size: 1rem;
-        }
+        #portfolio-section { padding: 60px 0; background: #f9f9f9; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { font-size: 2rem; margin-bottom: 8px; }
+        .section-title p { color: #666; font-size: 1rem; }
 
         .category-grid {
             display: grid;
@@ -65,98 +43,80 @@
             border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
-            text-decoration: none;
-            display: block;
             aspect-ratio: 3/4;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .category-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.25);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .category-card:hover img {
-            transform: scale(1.06);
-        }
+        .category-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
+        .category-card.active { box-shadow: 0 0 0 3px #f0c040, 0 12px 32px rgba(0,0,0,0.25); }
+        .category-card img.cover { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; pointer-events: none; }
+        .category-card:hover img.cover { transform: scale(1.06); }
 
         .category-card-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 100%);
             padding: 30px 20px 20px;
             color: white;
             text-align: left;
         }
-
-        .category-card-overlay h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 0 0 4px;
-        }
-
-        .category-card-overlay span {
-            font-size: 0.85rem;
-            opacity: 0.85;
-        }
-
-        .category-card-overlay .arrow {
+        .category-card-overlay h3 { font-size: 1.15rem; font-weight: 700; margin: 0 0 4px; }
+        .category-card-overlay span { font-size: 0.82rem; opacity: 0.85; }
+        .toggle-icon {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            color: #222;
+            bottom: 16px; right: 16px;
+            background: white; color: #222;
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
+            width: 30px; height: 30px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; font-weight: bold;
+            transition: background 0.2s, transform 0.3s;
+        }
+        .category-card.active .toggle-icon { background: #f0c040; transform: rotate(45deg); }
+
+        .photo-panel {
+            display: none;
+            grid-column: 1 / -1;
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 0.3s ease;
+        }
+        .photo-panel.open { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .photo-panel-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background 0.2s;
+            justify-content: space-between;
+            margin-bottom: 16px;
         }
+        .photo-panel-header h3 { font-size: 1.3rem; font-weight: 700; }
 
-        .category-card:hover .arrow {
-            background: #f0c040;
+        .close-panel {
+            background: #222; color: white;
+            border: none; border-radius: 30px;
+            padding: 8px 18px; font-size: 0.85rem;
+            cursor: pointer; transition: background 0.2s;
         }
+        .close-panel:hover { background: #f0c040; color: #222; }
 
-        /* ── Back to Categories Button ── */
-        .back-to-categories {
-            display: inline-block;
-            margin: 20px 0 0 0;
-            padding: 10px 22px;
-            background: #222;
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: background 0.2s;
+        .photo-panel .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 10px;
         }
-
-        .back-to-categories:hover {
-            background: #f0c040;
-            color: #222;
+        .photo-panel .image-grid a img {
+            width: 100%; height: 160px;
+            object-fit: cover; border-radius: 8px;
+            transition: transform 0.2s, opacity 0.2s;
         }
-
-        /* ── Album section title style ── */
-        .album-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 10px;
-        }
+        .photo-panel .image-grid a img:hover { transform: scale(1.03); opacity: 0.9; }
     </style>
 </head>
 
@@ -164,315 +124,179 @@
 
 <header>
     <div class="container">
-
         <div class="logo">
             <a href="index.html">
                 <img src="images/chosen logo i png.png" alt="Golden Eye Films Logo">
             </a>
         </div>
-
         <button class="menu-toggle">&#9776;</button>
-
         <nav id="main-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
-
-                <li><a href="#umemulo-album">Umemulo</a></li>
-                <li><a href="#wedding-album">White Weddings</a></li>
-                <li><a href="#umembeso-album">Umembeso</a></li>
-                <li><a href="#gradution-album">Graduations</a></li>
-
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="services.html">Services & Pricing</a></li>
                 <li><a href="booking.html">Book Now</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-
     </div>
 </header>
 
 <main>
-
-    <!-- ======================= CATEGORY SELECTION ======================= -->
-    <section id="portfolio-categories">
+    <section id="portfolio-section">
         <div class="container">
-            <h2>Our Portfolio</h2>
-            <p>Choose a category to explore our work</p>
+            <div class="section-title">
+                <h2>Our Portfolio</h2>
+                <p>Click a category to explore our work</p>
+            </div>
 
             <div class="category-grid">
 
-                <!-- Umemulo -->
-                <a href="#umemulo-album" class="category-card">
-                    <img src="images/Umemulo/_MG_1077.jpg" alt="Umemulo Photography">
+                <!-- ── UMEMULO CARD ── -->
+                <div class="category-card" onclick="togglePanel('umemulo-panel', this)">
+                    <img class="cover" src="images/Umemulo/_MG_1077.jpg" alt="Umemulo Photography">
                     <div class="category-card-overlay">
                         <h3>Umemulo</h3>
                         <span>Traditional Ceremonies</span>
-                        <div class="arrow">→</div>
+                        <div class="toggle-icon">+</div>
                     </div>
-                </a>
+                </div>
 
-                <!-- Weddings -->
-                <a href="#wedding-album" class="category-card">
-                    <img src="images/wedding/_MG_0138 (1).jpg" alt="Wedding Photography">
+                <!-- ── WEDDINGS CARD ── -->
+                <div class="category-card" onclick="togglePanel('wedding-panel', this)">
+                    <img class="cover" src="images/wedding/_MG_0138 (1).jpg" alt="Wedding Photography">
                     <div class="category-card-overlay">
                         <h3>White Weddings</h3>
                         <span>Timeless Moments</span>
-                        <div class="arrow">→</div>
+                        <div class="toggle-icon">+</div>
                     </div>
-                </a>
+                </div>
 
-                <!-- Umembeso -->
-                <a href="#umembeso-album" class="category-card">
-                    <img src="images/umembeso/_MG_3134.jpg" alt="Umembeso Photography">
+                <!-- ── UMEMBESO CARD ── -->
+                <div class="category-card" onclick="togglePanel('umembeso-panel', this)">
+                    <img class="cover" src="images/umembeso/_MG_3134.jpg" alt="Umembeso Photography">
                     <div class="category-card-overlay">
                         <h3>Umembeso</h3>
                         <span>Cultural Traditions</span>
-                        <div class="arrow">→</div>
+                        <div class="toggle-icon">+</div>
                     </div>
-                </a>
+                </div>
 
-                <!-- Graduation -->
-                <a href="#gradution-album" class="category-card">
-                    <img src="images/Gradution/_MG_1905.jpg" alt="Graduation Photography">
+                <!-- ── GRADUATION CARD ── -->
+                <div class="category-card" onclick="togglePanel('graduation-panel', this)">
+                    <img class="cover" src="images/Gradution/_MG_1905.jpg" alt="Graduation Photography">
                     <div class="category-card-overlay">
                         <h3>Graduations</h3>
                         <span>Academic Achievements</span>
-                        <div class="arrow">→</div>
+                        <div class="toggle-icon">+</div>
                     </div>
-                </a>
+                </div>
 
-            </div>
-        </div>
-    </section>
+                <!-- ══════════════════════════════════ -->
+                <!--         PHOTO PANELS              -->
+                <!-- ══════════════════════════════════ -->
 
-    <!-- ======================= ALBUMS ======================= -->
-    <section id="portfolio" class="section-padding">
-        <div class="container text-center">
-            <h2>Our Galleries</h2>
-            <p>Explore our galleries showcasing the beautiful moments we've had the honor to capture.</p>
-        </div>
+                <!-- ── UMEMULO PANEL ── -->
+                <div class="photo-panel" id="umemulo-panel">
+                    <div class="photo-panel-header">
+                        <h3>Umemulo Ceremonies</h3>
+                        <button class="close-panel" onclick="closePanel('umemulo-panel', event)">✕ Close</button>
+                    </div>
+                    <div class="image-grid">
+                        <a href="images/Umemulo/_MG_1077.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1077.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1670.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1670.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1002 (2).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1002 (2).jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1025 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1025 (1).jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1032.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1032.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1041 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1041 (1).jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1610.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1610.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1621.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1621.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1625 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1625 (1).jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1633.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1633.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1857.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1857.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_1869.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_1869.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/_MG_2270.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/_MG_2270.jpg" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/IMG_1455 (1)-1.JPG" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/IMG_1455 (1)-1.JPG" alt="Umemulo Photo"></a>
+                        <a href="images/Umemulo/IMG_1513-1.JPG" data-lightbox="umemulo" data-title="IntombiYomzulu"><img src="images/Umemulo/IMG_1513-1.JPG" alt="Umemulo Photo"></a>
+                    </div>
+                </div>
 
-        <!-- ======================= UMEMULO ======================= -->
-        <div class="portfolio-album container section-padding" id="umemulo-album">
-            <div class="album-header">
-                <h3>Umemulo Ceremonies</h3>
-                <a href="#portfolio-categories" class="back-to-categories">↑ Back to Categories</a>
-            </div>
-            <p class="album-description">Capturing the vibrant traditions and joyous celebrations of Umemulo.</p>
+                <!-- ── WEDDING PANEL ── -->
+                <div class="photo-panel" id="wedding-panel">
+                    <div class="photo-panel-header">
+                        <h3>White Weddings</h3>
+                        <button class="close-panel" onclick="closePanel('wedding-panel', event)">✕ Close</button>
+                    </div>
+                    <div class="image-grid">
+                        <a href="images/wedding/_MG_0138 (1).jpg" data-lightbox="wedding-gallery" data-title="The Happy Couple"><img src="images/wedding/_MG_0138 (1).jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_0142.jpg" data-lightbox="wedding-gallery" data-title="Wife And Husband"><img src="images/wedding/_MG_0142.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_0474.jpg" data-lightbox="wedding-gallery" data-title="Happy Family"><img src="images/wedding/_MG_0474.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_0492.jpg" data-lightbox="wedding-gallery" data-title="Couple"><img src="images/wedding/_MG_0492.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_0500 (1).jpg" data-lightbox="wedding-gallery" data-title="Happy Family"><img src="images/wedding/_MG_0500 (1).jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_0530.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood"><img src="images/wedding/_MG_0530.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_0535.jpg" data-lightbox="wedding-gallery" data-title="The Happy Couple"><img src="images/wedding/_MG_0535.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_0609 (1).jpg" data-lightbox="wedding-gallery" data-title="Wife And Husband"><img src="images/wedding/_MG_0609 (1).jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_6570 (2).jpg" data-lightbox="wedding-gallery" data-title="Happy Family"><img src="images/wedding/_MG_6570 (2).jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_7162 (1) (1).jpg" data-lightbox="wedding-gallery" data-title="Couple"><img src="images/wedding/_MG_7162 (1) (1).jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_7164.jpg" data-lightbox="wedding-gallery" data-title="Happy Family"><img src="images/wedding/_MG_7164.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_7165.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood"><img src="images/wedding/_MG_7165.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_7168 (1).jpg" data-lightbox="wedding-gallery" data-title="Couple"><img src="images/wedding/_MG_7168 (1).jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_7190.jpg" data-lightbox="wedding-gallery" data-title="Happy Family"><img src="images/wedding/_MG_7190.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_7199.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood"><img src="images/wedding/_MG_7199.jpg" alt="Wedding Photo"></a>
+                        <a href="images/wedding/_MG_7226.jpg" data-lightbox="wedding-gallery" data-title="Happy Family"><img src="images/wedding/_MG_7226.jpg" alt="Wedding Photo"></a>
+                    </div>
+                </div>
 
-            <div class="image-grid umemulo-gallery-layout">
-                <a href="images/Umemulo/_MG_1077.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1077.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1670.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1670.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1002 (2).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1002 (2).jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1025 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1025 (1).jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1032.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1032.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1041 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1041 (1).jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1610.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1610.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1621.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1621.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1625 (1).jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1625 (1).jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1633.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1633.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1857.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1857.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_1869.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_1869.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/_MG_2270.jpg" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/_MG_2270.jpg" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/IMG_1455 (1)-1.JPG" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/IMG_1455 (1)-1.JPG" alt="Umemulo Photo">
-                </a>
-                <a href="images/Umemulo/IMG_1513-1.JPG" data-lightbox="umemulo" data-title="IntombiYomzulu">
-                    <img src="images/Umemulo/IMG_1513-1.JPG" alt="Umemulo Photo">
-                </a>
-            </div>
-        </div>
+                <!-- ── UMEMBESO PANEL ── -->
+                <div class="photo-panel" id="umembeso-panel">
+                    <div class="photo-panel-header">
+                        <h3>Umembeso Ceremonies</h3>
+                        <button class="close-panel" onclick="closePanel('umembeso-panel', event)">✕ Close</button>
+                    </div>
+                    <div class="image-grid">
+                        <a href="images/umembeso/_MG_3143.jpg" data-lightbox="umembeso-gallery" data-title="Cultural Exchange"><img src="images/umembeso/_MG_3143.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_3134.jpg" data-lightbox="umembeso-gallery" data-title="Traditional Attire"><img src="images/umembeso/_MG_3134.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_3139.jpg" data-lightbox="umembeso-gallery" data-title="Family Gathering"><img src="images/umembeso/_MG_3139.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_3165.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_3165.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_3199.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_3199.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_3157.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_3157.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_4882 (1).jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_4882 (1).jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_4800.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_4800.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_4818.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_4818.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_4859 (1).jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_4859 (1).jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_4867.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_4867.jpg" alt="Umembeso Photo"></a>
+                        <a href="images/umembeso/_MG_4889.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration"><img src="images/umembeso/_MG_4889.jpg" alt="Umembeso Photo"></a>
+                    </div>
+                </div>
 
-        <!-- ======================= WEDDINGS ======================= -->
-        <div class="portfolio-album container section-padding" id="wedding-album">
-            <div class="album-header">
-                <h3>White Weddings</h3>
-                <a href="#portfolio-categories" class="back-to-categories">↑ Back to Categories</a>
-            </div>
-            <p class="album-description">Timeless moments, beautifully captured to cherish forever.</p>
+                <!-- ── GRADUATION PANEL ── -->
+                <div class="photo-panel" id="graduation-panel">
+                    <div class="photo-panel-header">
+                        <h3>Graduation Shoots</h3>
+                        <button class="close-panel" onclick="closePanel('graduation-panel', event)">✕ Close</button>
+                    </div>
+                    <div class="image-grid">
+                        <a href="images/Gradution/_MG_1905.jpg" data-lightbox="graduation-gallery" data-title="Cap Toss"><img src="images/Gradution/_MG_1905.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_1906 (1).jpg" data-lightbox="graduation-gallery" data-title="Proud Graduate"><img src="images/Gradution/_MG_1906 (1).jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_1908 (1).jpg" data-lightbox="graduation-gallery" data-title="Family Support"><img src="images/Gradution/_MG_1908 (1).jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_2024 (1).jpg" data-lightbox="graduation-gallery" data-title="Celebrating Success"><img src="images/Gradution/_MG_2024 (1).jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_2026.jpg" data-lightbox="graduation-gallery" data-title="Campus Shot"><img src="images/Gradution/_MG_2026.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_2099.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait"><img src="images/Gradution/_MG_2099.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_2100.jpg" data-lightbox="graduation-gallery" data-title="Celebrating Success"><img src="images/Gradution/_MG_2100.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_2193.jpg" data-lightbox="graduation-gallery" data-title="Campus Shot"><img src="images/Gradution/_MG_2193.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_2195.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait"><img src="images/Gradution/_MG_2195.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_9786.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait"><img src="images/Gradution/_MG_9786.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_9804.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait"><img src="images/Gradution/_MG_9804.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_9834.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait"><img src="images/Gradution/_MG_9834.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_9845.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait"><img src="images/Gradution/_MG_9845.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_9866.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait"><img src="images/Gradution/_MG_9866.jpg" alt="Graduation Photo"></a>
+                        <a href="images/Gradution/_MG_9906.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait"><img src="images/Gradution/_MG_9906.jpg" alt="Graduation Photo"></a>
+                    </div>
+                </div>
 
-            <div class="image-grid">
-                <a href="images/wedding/_MG_0138 (1).jpg" data-lightbox="wedding-gallery" data-title="The Happy Couple">
-                    <img src="images/wedding/_MG_0138 (1).jpg" alt="Wedding Photo 1">
-                </a>
-                <a href="images/wedding/_MG_0142.jpg" data-lightbox="wedding-gallery" data-title="Wife And Husband">
-                    <img src="images/wedding/_MG_0142.jpg" alt="Wedding Photo 2">
-                </a>
-                <a href="images/wedding/_MG_0474.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                    <img src="images/wedding/_MG_0474.jpg" alt="Wedding Photo 3">
-                </a>
-                <a href="images/wedding/_MG_0492.jpg" data-lightbox="wedding-gallery" data-title="Couple">
-                    <img src="images/wedding/_MG_0492.jpg" alt="Wedding Photo 4">
-                </a>
-                <a href="images/wedding/_MG_0500 (1).jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                    <img src="images/wedding/_MG_0500 (1).jpg" alt="Wedding Photo 5">
-                </a>
-                <a href="images/wedding/_MG_0530.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
-                    <img src="images/wedding/_MG_0530.jpg" alt="Wedding Photo 6">
-                </a>
-                <a href="images/wedding/_MG_0535.jpg" data-lightbox="wedding-gallery" data-title="The Happy Couple">
-                    <img src="images/wedding/_MG_0535.jpg" alt="Wedding Photo 7">
-                </a>
-                <a href="images/wedding/_MG_0609 (1).jpg" data-lightbox="wedding-gallery" data-title="Wife And Husband">
-                    <img src="images/wedding/_MG_0609 (1).jpg" alt="Wedding Photo 8">
-                </a>
-                <a href="images/wedding/_MG_6570 (2).jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                    <img src="images/wedding/_MG_6570 (2).jpg" alt="Wedding Photo 9">
-                </a>
-                <a href="images/wedding/_MG_7162 (1) (1).jpg" data-lightbox="wedding-gallery" data-title="Couple">
-                    <img src="images/wedding/_MG_7162 (1) (1).jpg" alt="Wedding Photo 10">
-                </a>
-                <a href="images/wedding/_MG_7164.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                    <img src="images/wedding/_MG_7164.jpg" alt="Wedding Photo 11">
-                </a>
-                <a href="images/wedding/_MG_7165.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
-                    <img src="images/wedding/_MG_7165.jpg" alt="Wedding Photo 12">
-                </a>
-                <a href="images/wedding/_MG_7168 (1).jpg" data-lightbox="wedding-gallery" data-title="Couple">
-                    <img src="images/wedding/_MG_7168 (1).jpg" alt="Wedding Photo 13">
-                </a>
-                <a href="images/wedding/_MG_7190.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                    <img src="images/wedding/_MG_7190.jpg" alt="Wedding Photo 14">
-                </a>
-                <a href="images/wedding/_MG_7199.jpg" data-lightbox="wedding-gallery" data-title="Mother Hood">
-                    <img src="images/wedding/_MG_7199.jpg" alt="Wedding Photo 15">
-                </a>
-                <a href="images/wedding/_MG_7226.jpg" data-lightbox="wedding-gallery" data-title="Happy Family">
-                    <img src="images/wedding/_MG_7226.jpg" alt="Wedding Photo 16">
-                </a>
-            </div>
-        </div>
-
-        <!-- ======================= UMEMBESO ======================= -->
-        <div class="portfolio-album container section-padding" id="umembeso-album">
-            <div class="album-header">
-                <h3>Umembeso Ceremonies</h3>
-                <a href="#portfolio-categories" class="back-to-categories">↑ Back to Categories</a>
-            </div>
-            <p class="album-description">Capturing the warmth and significance of Umembeso traditions.</p>
-            <div class="image-grid">
-                <a href="images/umembeso/_MG_3143.jpg" data-lightbox="umembeso-gallery" data-title="Cultural Exchange">
-                    <img src="images/umembeso/_MG_3143.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_3134.jpg" data-lightbox="umembeso-gallery" data-title="Traditional Attire">
-                    <img src="images/umembeso/_MG_3134.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_3139.jpg" data-lightbox="umembeso-gallery" data-title="Family Gathering">
-                    <img src="images/umembeso/_MG_3139.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_3165.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_3165.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_3199.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_3199.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_3157.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_3157.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_4882 (1).jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_4882 (1).jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_4800.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_4800.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_4818.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_4818.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_4859 (1).jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_4859 (1).jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_4867.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_4867.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-                <a href="images/umembeso/_MG_4889.jpg" data-lightbox="umembeso-gallery" data-title="Joyful Celebration">
-                    <img src="images/umembeso/_MG_4889.jpg" alt="Umembeso Ceremony Photo">
-                </a>
-            </div>
-        </div>
-
-        <!-- ======================= GRADUATION ======================= -->
-        <div class="portfolio-album container section-padding" id="gradution-album">
-            <div class="album-header">
-                <h3>Graduation Shoots</h3>
-                <a href="#portfolio-categories" class="back-to-categories">↑ Back to Categories</a>
-            </div>
-            <p class="album-description">Celebrate your academic achievement with professional and memorable graduation photos.</p>
-            <div class="image-grid">
-                <a href="images/Gradution/_MG_1905.jpg" data-lightbox="graduation-gallery" data-title="Cap Toss">
-                    <img src="images/Gradution/_MG_1905.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_1906 (1).jpg" data-lightbox="graduation-gallery" data-title="Proud Graduate">
-                    <img src="images/Gradution/_MG_1906 (1).jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_1908 (1).jpg" data-lightbox="graduation-gallery" data-title="Family Support">
-                    <img src="images/Gradution/_MG_1908 (1).jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_2024 (1).jpg" data-lightbox="graduation-gallery" data-title="Celebrating Success">
-                    <img src="images/Gradution/_MG_2024 (1).jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_2026.jpg" data-lightbox="graduation-gallery" data-title="Campus Shot">
-                    <img src="images/Gradution/_MG_2026.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_2099.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                    <img src="images/Gradution/_MG_2099.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_2100.jpg" data-lightbox="graduation-gallery" data-title="Celebrating Success">
-                    <img src="images/Gradution/_MG_2100.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_2193.jpg" data-lightbox="graduation-gallery" data-title="Campus Shot">
-                    <img src="images/Gradution/_MG_2193.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_2195.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                    <img src="images/Gradution/_MG_2195.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_9786.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                    <img src="images/Gradution/_MG_9786.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_9804.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                    <img src="images/Gradution/_MG_9804.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_9834.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                    <img src="images/Gradution/_MG_9834.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_9845.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                    <img src="images/Gradution/_MG_9845.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_9866.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                    <img src="images/Gradution/_MG_9866.jpg" alt="Graduation Photo">
-                </a>
-                <a href="images/Gradution/_MG_9906.jpg" data-lightbox="graduation-gallery" data-title="Official Portrait">
-                    <img src="images/Gradution/_MG_9906.jpg" alt="Graduation Photo">
-                </a>
-            </div>
-        </div>
-
+            </div><!-- end category-grid -->
+        </div><!-- end container -->
     </section>
 </main>
 
@@ -495,7 +319,7 @@
             </div>
             <div class="footer-section contact-info">
                 <h3>Contact Us</h3>
-                <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95f2faf9f1f0fbf0ecf0f3fcf9f8e6a7d5f2f8f4fcf9bbf6faf8">[email&#160;protected]</a></p>
+                <p>Email: goldeneyefilms2@gmail.com</p>
                 <p>Phone: +27 71 833 9470</p>
                 <div class="social-links">
                     <a href="https://wa.me/27718339470" target="_blank">
@@ -516,5 +340,34 @@
     </div>
 </footer>
 
-<!-- Lightbox JS -->
-<script data-cfasync="false" src="/cdn-cgi/s
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+<script src="js/scripts.js" defer></script>
+
+<script>
+    function togglePanel(panelId, cardEl) {
+        const panel = document.getElementById(panelId);
+        const isOpen = panel.classList.contains('open');
+
+        // Close all panels and deactivate all cards
+        document.querySelectorAll('.photo-panel').forEach(p => p.classList.remove('open'));
+        document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+
+        // If it wasn't already open, open it
+        if (!isOpen) {
+            panel.classList.add('open');
+            cardEl.classList.add('active');
+            setTimeout(() => {
+                panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        }
+    }
+
+    function closePanel(panelId, event) {
+        event.stopPropagation();
+        document.getElementById(panelId).classList.remove('open');
+        document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+    }
+</script>
+
+</body>
+</html>
